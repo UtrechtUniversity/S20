@@ -1,0 +1,34 @@
+--- 
+title: "Summer School S20 - Introduction to Structural Equation Modeling using Mplus"
+subtitle: "Day 4 - Traits, Measurement Errors, and Time-Lags"
+author: "Jeroen D. Mulder¹, Ellen Hamaker¹, & Caspar J. van Lissa¹"
+date: "¹Utrecht University, Methodology & Statistics"
+site: bookdown::bookdown_site
+output: 
+  bookdown::gitbook:
+    config: 
+      toc:
+       collapse: section
+      search: yes
+      fontsettings:
+        size: 2
+    split_by: section
+    df_print: paged
+documentclass: book
+bibliography: [references.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Exercises for day 4 of the Summer School S20."
+---
+
+# Introduction to Structural Equation Modeling using Mplus - Day 4{-}
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE)
+```
+
+This course material is part of the [Introduction to Structural Equation Modeling using Mplus](https://utrechtsummerschool.nl/courses/social-sciences/introduction-to-structural-equation-modeling-using-mplus), a five-day summer school course hosted by Utrecht University's department of Methodology and Statistics. The main objective of this course is to learn how to analyze several models with Mplus (e.g. path models, multiple group models, mediation and moderation, confirmatory factor analysis, and longitudinal models). If you are interested in more in-depth lectures on the fundamentals of Mplus and advanced longitudinal models, please consider the [Advanced Course on using Mplus](https://utrechtsummerschool.nl/courses/social-sciences/advanced-course-on-using-mplus). 
+
+Using the menu on the left, you can navigate to the exercises of day 4. 
+
+
