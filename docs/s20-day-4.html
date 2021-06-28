@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Utrecht University Summer School S20 and S23</title>
+  <title>S20 - Day 4 | Utrecht University Summer School S20 and S23</title>
   <meta name="description" content="Exercises for days 4 of the Summer School S20 and S23." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Utrecht University Summer School S20 and S23" />
+  <meta property="og:title" content="S20 - Day 4 | Utrecht University Summer School S20 and S23" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Utrecht University Summer School S20 and S23" />
+  <meta name="twitter:title" content="S20 - Day 4 | Utrecht University Summer School S20 and S23" />
   
   <meta name="twitter:description" content="Exercises for days 4 of the Summer School S20 and S23." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="s20-day-4.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="the-mean-structure.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -101,25 +101,27 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Utrecht University Summer School S20 and S23</h1>
-<h2 class="subtitle"><em>Exercises day 4 S20 and day 4 S23</em></h2>
-<p class="author"><em>Jeroen D. Mulder¹, Ellen Hamaker¹, &amp; Caspar J. van Lissa¹</em></p>
-<p class="date"><em>¹Utrecht University, Methodology &amp; Statistics</em></p>
-</div>
-<div id="introduction" class="section level1 unnumbered">
-<h1>Introduction</h1>
-<p>These course materials are part of the <a href="https://utrechtsummerschool.nl/courses/social-sciences/introduction-to-structural-equation-modeling-using-mplus">Introduction to Structural Equation Modeling using Mplus (S20)</a> and the <a href="https://utrechtsummerschool.nl/courses/social-sciences/advanced-course-on-using-mplus">Advanced Course on using Mplus (S23)</a> courses. Both are five-day summer school courses hosted by Utrecht University’s department of Methodology and Statistics. The main objective of the introductory course (S20) is to learn how to analyze several models with Mplus (e.g. path models, multiple group models, mediation and moderation, confirmatory factor analysis, and longitudinal models). More in-depth lectures on the fundamentals of Mplus and advanced longitudinal models are discussed in the advanced course (S23).</p>
-<p>Using the menu on the left, you can navigate to exercises of day 4 of S20 and S23.</p>
-
+<div id="s20---day-4" class="section level1 unnumbered">
+<h1>S20 - Day 4</h1>
+<p>These exercises belong to day 4 of S20, ``Traits, Measurement Errors, and Time-Lags". We are going to analyze the same data that were used in the Hamaker et al. (2015) paper and were presented in the lecture. The goals of these exercises are to get some experience with fitting (random intercept) cross-lagged panel models, interpreting their results, and comparing them. Here, we focus on the relationship between <em>Parental Responsiveness</em> and <em>Adolescents’ Depressive Symptomatology</em> (note, in the lecture the focus was on a different concept, namely <em>Parental Psychological Control</em>).</p>
+<p>The data (means, standard deviations, and the correlation matrix) are included in the file <code>Soenens.dat</code>. The number of observations is 396. The data command for these data should be:</p>
+<pre><code>DATA:       
+  TYPE = MEANS STDEVIATIONS CORRELATION;   
+  FILE = Soenens.dat;
+  NOBSERVATIONS = 396;</code></pre>
+<p>The variable command should be:</p>
+<pre><code>VARIABLE:   
+  NAMES = PsCon1-PsCon3 Res1-Res3 BeCon1-BeCon3 Dep1-Dep3;
+  USEVARIABLES = Res1 Dep1 Res2 Dep2 Res3 Dep3;</code></pre>
+<p>Do the exercises. You can navigate through them using the left-hand menu or the arrows on left- and right-hand side of this screen. Answers are included below each exercise. The Mplus input files can found in the Summer School Dropbox-folder (<code>./Dropbox/Lab material - Day 4/S20 - Day 4 - 4MplusInputFiles</code>).</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="s20-day-4.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-mean-structure.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

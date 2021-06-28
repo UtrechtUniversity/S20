@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Utrecht University Summer School S20 and S23</title>
+  <title>S23 - Day 4 | Utrecht University Summer School S20 and S23</title>
   <meta name="description" content="Exercises for days 4 of the Summer School S20 and S23." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Utrecht University Summer School S20 and S23" />
+  <meta property="og:title" content="S23 - Day 4 | Utrecht University Summer School S20 and S23" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Utrecht University Summer School S20 and S23" />
+  <meta name="twitter:title" content="S23 - Day 4 | Utrecht University Summer School S20 and S23" />
   
   <meta name="twitter:description" content="Exercises for days 4 of the Summer School S20 and S23." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="s20-day-4.html"/>
+<link rel="prev" href="the-ri-clpm.html"/>
+<link rel="next" href="i-quasi-simplex-model.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -101,25 +101,28 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Utrecht University Summer School S20 and S23</h1>
-<h2 class="subtitle"><em>Exercises day 4 S20 and day 4 S23</em></h2>
-<p class="author"><em>Jeroen D. Mulder¹, Ellen Hamaker¹, &amp; Caspar J. van Lissa¹</em></p>
-<p class="date"><em>¹Utrecht University, Methodology &amp; Statistics</em></p>
-</div>
-<div id="introduction" class="section level1 unnumbered">
-<h1>Introduction</h1>
-<p>These course materials are part of the <a href="https://utrechtsummerschool.nl/courses/social-sciences/introduction-to-structural-equation-modeling-using-mplus">Introduction to Structural Equation Modeling using Mplus (S20)</a> and the <a href="https://utrechtsummerschool.nl/courses/social-sciences/advanced-course-on-using-mplus">Advanced Course on using Mplus (S23)</a> courses. Both are five-day summer school courses hosted by Utrecht University’s department of Methodology and Statistics. The main objective of the introductory course (S20) is to learn how to analyze several models with Mplus (e.g. path models, multiple group models, mediation and moderation, confirmatory factor analysis, and longitudinal models). More in-depth lectures on the fundamentals of Mplus and advanced longitudinal models are discussed in the advanced course (S23).</p>
-<p>Using the menu on the left, you can navigate to exercises of day 4 of S20 and S23.</p>
+<div id="s23---day-4" class="section level1 unnumbered">
+<h1>S23 - Day 4</h1>
+<p>These exercises belong to day 4 of S23, ``Cross-lagged relations". The exercises consist roughly of 2 parts: first we will focus on the quasi-simplex model, and second we will focus on the random intercept cross-lagged panel model.</p>
+<p>For the quasi-simplex model we are going to study the concept of life satisfaction. The covariance matrix is in the file <code>Coenders.dat</code> and comes from 1724 children and adolescents that participated in the <em>National Survey of Child and Adolescent Well-Being</em> (NSCAW) in Russia. They indicated how satisfied they were with their lives as a whole on a 10-point scale (1 = not at all satisfied, 10 = very satisfied). There were three waves (1993, 1994 and 1995). At the third wave, the question was asked twice (with 40 minutes in between). Hence, in total there are four measurements obtained at three waves. The data and variables commands for these data should read:</p>
+<div>
+<pre><code>DATA: 
+  TYPE = COVARIANCE;
+  FILE = Coenders.dat;
+  NOBSERVATIONS = 1724;
 
+VARIABLE: 
+  NAMES = Y1 Y2 Y3 Y4;</code></pre>
+</div>
+<p>The researchers are interested in fitting a quasi-simplex model to these data, that is, a simplex model at the latent level, thus accounting for measurement error in the observations. This model is graphically represented in slide 19. Use the menu on the left to navigate to the exercises. The Mplus input files can found in the Summer School Dropbox-folder (<code>./Dropbox/Lab material - Day 4/S23 - Day 4 - 4MplusInputFiles</code>).</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="s20-day-4.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="the-ri-clpm.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="i-quasi-simplex-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
