@@ -36,7 +36,7 @@ How would you specify the model in Mplus?
 
 <details>
   <summary><b>Click to show answers</b></summary>
-See the Mplus input file `ExerciseB.inp`. 
+See the Mplus input file `Exercise B.inp`. 
 
 `r if(knitr::is_html_output()){"\\details"}`
 
@@ -67,7 +67,7 @@ To make sure a quasi-simplex model is identified, often the variances of the mea
 <details>
   <summary><b>Click to show answers</b></summary>
 
-See the Mplus input file `ExerciseE.inp` for how to constrain the measurement error variances over time. With constrained measurment error variances, we estimate 3 parameters less. So, we estimate $11 - 3 = 8$ and therefore have $10 - 8 = 2$ *df*. 
+See the Mplus input file `Exercise E.inp` for how to constrain the measurement error variances over time. With constrained measurment error variances, we estimate 3 parameters less. So, we estimate $11 - 3 = 8$ and therefore have $10 - 8 = 2$ *df*. 
 
 `r if(knitr::is_html_output()){"\\details"}`
 
@@ -105,7 +105,7 @@ What is the problem?
 <details>
   <summary><b>Click to show answers</b></summary>
 
-In your output, look at the reported (estimated) residual variances. We find that the residual variance of `ETA4` is estimated to be negative. This is a Heywood case and it is causing the warning to appear. Note however, that this time it is significant.
+In your output, look at the reported (estimated) residual variances. We find that the residual variance of `ETA4` is estimated to be negative. This is a Heywood case and it is causing the warning to appear. Note however, that it is significant, so ``just" fixing it to 0 as a solution is probably not warrented here. 
 
 `r if(knitr::is_html_output()){"\\details"}`
 
@@ -141,7 +141,7 @@ Are these two models nested? If so, how? If not, why not, and how could we compa
 
 <details>
   <summary><b>Click to show answers</b></summary>
-Yes, they are nested: this model is a special case of the previous model, as it is based on having `eta3` and `eta4` from the previous model now being a single latent variable. That is, the residual variance of eta 4 could be fixed to zero: this gives us 1 *df* for the difference.
+Yes, they are nested: this model is a special case of the previous model, as it is based on having `ETA3` and `ETA4` from the previous model now being a single latent variable. That is, we can constrain the residual variance of `ETA4` to zero to get the alternative model. This gives us 1 *df* for the difference.
 `r if(knitr::is_html_output()){"\\details"}`
 
 #### Exercise J{-}
@@ -149,7 +149,7 @@ Specify this model in Mplus and run it. Report on the model fit.
 
 <details>
   <summary><b>Click to show answers</b></summary>
-See the Mplus input file `Excercise1j.inp` for the model specification in Mplus. Apart from the $\chi^{2}$-test of model fit, the model fits well: 
+See the Mplus input file `Excercise J.inp` for the model specification in Mplus. Apart from the $\chi^{2}$-test of model fit, the model fits well: 
 
 - $\chi^{2} (3) = 27.37$, with $p < .001$,
 - RMSEA = 0.069,
@@ -164,7 +164,7 @@ Compare the two models to each other. What can you conclude?
 
 <details>
   <summary><b>Click to show answers</b></summary>
-Comparing both models using the $\Delta \chi^{2}$-test gives us $27.37 – 13.29 = 14.0$ with 1 *df* such that $p < .001$. This implies that imposing the restriction is not tenable. 
+Comparing both models using the $\Delta \chi^{2}$-test gives us $27.37 – 13.29 = 14.0$ with 1 *df* such that $p < .001$. This implies that imposing the restriction is not tenable. You can calculate the *p*-value of the $\Delta \chi^{2}$ using the `pchisq()`-function in R (with the `lower.tail` argument set to `FALSE`), or [an online tool](http://www.fourmilab.ch/rpkp/experiments/analysis/chiCalc.html)
 
 Comparing the models using information criteria gives us AIC = 29593 and BIC = 29637 for the first model, and AIC = 29605 and BIC = 29643 for the second. In conclusion, all measures indicate the first model is better. However, the current model makes more theoretical sense, and the negative variance estimate in the first model is a problem. For these 2 reasons, we should prefer the current model.
 `r if(knitr::is_html_output()){"\\details"}`
@@ -182,7 +182,7 @@ Run a model in which you include the `Y3 WITH Y4` parameter. Where will this rel
 
 <details>
   <summary><b>Click to show answers</b></summary>
-See Exercise1m.inp for the Mplus specification of this model. The `Y3 WITH Y4` parameter is an additional covariance between the residuals of `y3` and `y4` (so not between `y3` and `y4` themselves). Model fit is quite good (except for the $\chi^{2}$-test of model fit): 
+See `Exercise M.inp` for the Mplus specification of this model. The `Y3 WITH Y4` parameter is an additional covariance between the residuals of `y3` and `y4` (so not between `y3` and `y4` themselves). Model fit is quite good (except for the $\chi^{2}$-test of model fit): 
 
 - $\chi^{2} (2) = 7.077$, $p = .0291$,
 - RMSEA = 0.038,
@@ -230,7 +230,7 @@ There are 10 observed variables such that there are $\frac{10*11}{2} = 55$ uniqu
 `r if(knitr::is_html_output()){"\\details"}`
 
 #### Exercise B{-}
-We begin with an RI-CLPM. For now, do not impose any constraints on the parameters across time. Draw the model, and indicate which parameters will be estimated freely. How many parameters will be estimated in total? So how many *df* are there?
+We begin with an RI-CLPM (see slide 53). For now, do not impose any constraints on the parameters across time. Draw the model, and indicate which parameters will be estimated freely. How many parameters will be estimated in total? So how many *df* are there?
 
 <details>
   <summary><b>Click to show answers</b></summary>
@@ -253,7 +253,7 @@ Run the model. Check whether the number of *df* is correct. Also look at the TEC
 
 <details>
   <summary><b>Click to show answers</b></summary>
-The input for this model is in RICLPM.inp. The model means are estimated in the $\nu$-matrix, no parameters are estimated in the $\theta$-matrix (measurement error variances), $\lambda$-matrix (factor loadings), or $\alpha$-matrix (means/intercepts of the latent variables). The variances and covariance of the random intercepts, the within-person centered variables at wave 1, and the dynamic errors at subsequent waves are all estimated in the $\psi$-matrix. The lagged regression coefficients are estimated in $\beta$.
+The input for this model is in `RICLPM.inp`. The model means are estimated in the $\nu$-matrix, no parameters are estimated in the $\theta$-matrix (measurement error variances), $\lambda$-matrix (factor loadings), or $\alpha$-matrix (means/intercepts of the latent variables). The variances and covariance of the random intercepts, the within-person centered variables at wave 1, and the dynamic errors at subsequent waves are all estimated in the $\psi$-matrix. The lagged regression coefficients are estimated in $\beta$.
 
 Apart from the $\chi^{2}$-test of model, all fit indices indicate at least acceptable fit. 
 
@@ -275,7 +275,7 @@ Omit the random intercepts. How many parameters and *df* does this model have? W
 
 <details>
   <summary><b>Click to show answers</b></summary>
-The input for this model is CLPMasRICLPM.inp. The model has three parameters less (and thus 3 *df* more) than the previous model: 2 variances and the covariance for the random intercepts.
+The input for this model is `CLPMasRICLPM.inp`. The model has three parameters less (and thus 3 *df* more) than the previous model: 2 variances and the covariance for the random intercepts.
 
 The model fit indices show that this model does not fit well: 
 
@@ -288,13 +288,17 @@ The model fit indices show that this model does not fit well:
 `r if(knitr::is_html_output()){"\\details"}`
 
 #### Exercise F{-}
-Specify the CLPM and run this model. Compare it to the previous two model. How are these models related?
+Specify the CLPM and run this model. Compare it to the previous two models. How are these models related?
 
 <details>
   <summary><b>Click to show answers</b></summary>
-The input for this model is in CLPM.inp. This model is statistically identical to the previous model; these are different parameterizations of the same model. The model fit is therefore also exactly the same. Hence, this model is a special case of the RI-CLPM. 
+The input for this model is in `CLPM.inp`. This model is statistically identical to the previous model; these are different parameterizations of the same model. The model fit is therefore also exactly the same. Hence, this model is a special case of the RI-CLPM. 
 
 Comparing the two models using a chi-square difference test gives: $\Delta \chi^{2} = 73.37 - 41.45 = 31.92$ with $24 – 21 = 3$ *df*, $p < .001$. Hence, the random intercepts should not be omitted; put differently, there are stable, trait-like difference between families in the two variables (parental dysphoria and psychological problems).
+
+However, when constraints are placed on the bound of the parameter space (which is the case here, fixing a variance to 0 is its absolute minimum value), we should actually use the chi-bar-square test ($\bar{\chi}^{2}$-test; Stoel et al. 2006). The traditional $\Delta \chi^{2}$-test does not take into account that variances can only be positive and is therefore conservative. This means that if it is significant, we are certain that the correct test (i.e., the $\bar{\chi}^{2}$ test) would also be significant.  On the other hand, when the usual chi‐square test is not significant, we do not know anything about the result of the correct test (it can be significant or not significant).
+
+If you are working in R with the lavaan-package, you can find more information about the $\bar{\chi}^{2}$-test at [jeroendmulder.github.io/RI-CLPM/lavaan.html#(bar{chi}^{2})-test](https://jeroendmulder.github.io/RI-CLPM/lavaan.html#(bar{chi}^{2})-test). For Mplus users, there is a [Shiny app by Rebecca Kuiper](https://www.uu.nl/staff/RMKuiper/Websites %2F Shiny apps) available as well. 
 
 `r if(knitr::is_html_output()){"\\details"}`
 
@@ -305,7 +309,7 @@ Include the significant standardized parameter estimates for the covariances and
 
 #### Exercise H{-}
 
-iscuss how the model results differ.
+Discuss how the model results differ.
 
 <details>
   <summary><b>Click to show answers</b></summary>

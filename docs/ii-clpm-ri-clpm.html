@@ -136,7 +136,7 @@ VARIABLE:
 </div>
 <div id="exercise-b-1" class="section level4 unnumbered">
 <h4>Exercise B</h4>
-<p>We begin with an RI-CLPM. For now, do not impose any constraints on the parameters across time. Draw the model, and indicate which parameters will be estimated freely. How many parameters will be estimated in total? So how many <em>df</em> are there?</p>
+<p>We begin with an RI-CLPM (see slide 53). For now, do not impose any constraints on the parameters across time. Draw the model, and indicate which parameters will be estimated freely. How many parameters will be estimated in total? So how many <em>df</em> are there?</p>
 <details>
 <summary>
 <b>Click to show answers</b>
@@ -162,7 +162,7 @@ VARIABLE:
 <summary>
 <b>Click to show answers</b>
 </summary>
-<p>The input for this model is in RICLPM.inp. The model means are estimated in the <span class="math inline">\(\nu\)</span>-matrix, no parameters are estimated in the <span class="math inline">\(\theta\)</span>-matrix (measurement error variances), <span class="math inline">\(\lambda\)</span>-matrix (factor loadings), or <span class="math inline">\(\alpha\)</span>-matrix (means/intercepts of the latent variables). The variances and covariance of the random intercepts, the within-person centered variables at wave 1, and the dynamic errors at subsequent waves are all estimated in the <span class="math inline">\(\psi\)</span>-matrix. The lagged regression coefficients are estimated in <span class="math inline">\(\beta\)</span>.</p>
+<p>The input for this model is in <code>RICLPM.inp</code>. The model means are estimated in the <span class="math inline">\(\nu\)</span>-matrix, no parameters are estimated in the <span class="math inline">\(\theta\)</span>-matrix (measurement error variances), <span class="math inline">\(\lambda\)</span>-matrix (factor loadings), or <span class="math inline">\(\alpha\)</span>-matrix (means/intercepts of the latent variables). The variances and covariance of the random intercepts, the within-person centered variables at wave 1, and the dynamic errors at subsequent waves are all estimated in the <span class="math inline">\(\psi\)</span>-matrix. The lagged regression coefficients are estimated in <span class="math inline">\(\beta\)</span>.</p>
 <p>Apart from the <span class="math inline">\(\chi^{2}\)</span>-test of model, all fit indices indicate at least acceptable fit.</p>
 <ul>
 <li><span class="math inline">\(\chi^{2} (21) = 41.451\)</span>, <span class="math inline">\(p = .005\)</span>,</li>
@@ -187,7 +187,7 @@ VARIABLE:
 <summary>
 <b>Click to show answers</b>
 </summary>
-<p>The input for this model is CLPMasRICLPM.inp. The model has three parameters less (and thus 3 <em>df</em> more) than the previous model: 2 variances and the covariance for the random intercepts.</p>
+<p>The input for this model is <code>CLPMasRICLPM.inp</code>. The model has three parameters less (and thus 3 <em>df</em> more) than the previous model: 2 variances and the covariance for the random intercepts.</p>
 <p>The model fit indices show that this model does not fit well:</p>
 <ul>
 <li><span class="math inline">\(\chi^{2} (24) = 73.374\)</span>, <span class="math inline">\(p &lt; .001\)</span>,</li>
@@ -199,13 +199,15 @@ VARIABLE:
 </div>
 <div id="exercise-f-1" class="section level4 unnumbered">
 <h4>Exercise F</h4>
-<p>Specify the CLPM and run this model. Compare it to the previous two model. How are these models related?</p>
+<p>Specify the CLPM and run this model. Compare it to the previous two models. How are these models related?</p>
 <details>
 <summary>
 <b>Click to show answers</b>
 </summary>
-<p>The input for this model is in CLPM.inp. This model is statistically identical to the previous model; these are different parameterizations of the same model. The model fit is therefore also exactly the same. Hence, this model is a special case of the RI-CLPM.</p>
+<p>The input for this model is in <code>CLPM.inp</code>. This model is statistically identical to the previous model; these are different parameterizations of the same model. The model fit is therefore also exactly the same. Hence, this model is a special case of the RI-CLPM.</p>
 <p>Comparing the two models using a chi-square difference test gives: <span class="math inline">\(\Delta \chi^{2} = 73.37 - 41.45 = 31.92\)</span> with <span class="math inline">\(24 – 21 = 3\)</span> <em>df</em>, <span class="math inline">\(p &lt; .001\)</span>. Hence, the random intercepts should not be omitted; put differently, there are stable, trait-like difference between families in the two variables (parental dysphoria and psychological problems).</p>
+<p>However, when constraints are placed on the bound of the parameter space (which is the case here, fixing a variance to 0 is its absolute minimum value), we should actually use the chi-bar-square test (<span class="math inline">\(\bar{\chi}^{2}\)</span>-test; Stoel et al. 2006). The traditional <span class="math inline">\(\Delta \chi^{2}\)</span>-test does not take into account that variances can only be positive and is therefore conservative. This means that if it is significant, we are certain that the correct test (i.e., the <span class="math inline">\(\bar{\chi}^{2}\)</span> test) would also be significant. On the other hand, when the usual chi‐square test is not significant, we do not know anything about the result of the correct test (it can be significant or not significant).</p>
+<p>If you are working in R with the lavaan-package, you can find more information about the <span class="math inline">\(\bar{\chi}^{2}\)</span>-test at <a href="https://jeroendmulder.github.io/RI-CLPM/lavaan.html#(bar%7Bchi%7D%5E%7B2%7D)-test">jeroendmulder.github.io/RI-CLPM/lavaan.html#(bar{chi}^{2})-test</a>. For Mplus users, there is a <a href="https://www.uu.nl/staff/RMKuiper/Websites%20%2F%20Shiny%20apps">Shiny app by Rebecca Kuiper</a> available as well.</p>
 </div>
 <div id="exercise-g-1" class="section level4 unnumbered">
 <h4>Exercise G</h4>
@@ -217,7 +219,7 @@ VARIABLE:
 </div>
 <div id="exercise-h-1" class="section level4 unnumbered">
 <h4>Exercise H</h4>
-<p>iscuss how the model results differ.</p>
+<p>Discuss how the model results differ.</p>
 <details>
 <summary>
 <b>Click to show answers</b>

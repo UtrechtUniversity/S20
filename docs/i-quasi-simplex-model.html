@@ -120,7 +120,7 @@
 <summary>
 <b>Click to show answers</b>
 </summary>
-<p>See the Mplus input file <code>ExerciseB.inp</code>.</p>
+<p>See the Mplus input file <code>Exercise B.inp</code>.</p>
 </div>
 <div id="exercise-c" class="section level4 unnumbered">
 <h4>Exercise C</h4>
@@ -148,7 +148,7 @@
 <summary>
 <b>Click to show answers</b>
 </summary>
-<p>See the Mplus input file <code>ExerciseE.inp</code> for how to constrain the measurement error variances over time. With constrained measurment error variances, we estimate 3 parameters less. So, we estimate <span class="math inline">\(11 - 3 = 8\)</span> and therefore have <span class="math inline">\(10 - 8 = 2\)</span> <em>df</em>.</p>
+<p>See the Mplus input file <code>Exercise E.inp</code> for how to constrain the measurement error variances over time. With constrained measurment error variances, we estimate 3 parameters less. So, we estimate <span class="math inline">\(11 - 3 = 8\)</span> and therefore have <span class="math inline">\(10 - 8 = 2\)</span> <em>df</em>.</p>
 </div>
 <div id="exercise-e" class="section level4 unnumbered">
 <h4>Exercise E</h4>
@@ -182,7 +182,7 @@ PROBLEM INVOLVING VARIABLE ETA4.</code></pre>
 <summary>
 <b>Click to show answers</b>
 </summary>
-<p>In your output, look at the reported (estimated) residual variances. We find that the residual variance of <code>ETA4</code> is estimated to be negative. This is a Heywood case and it is causing the warning to appear. Note however, that this time it is significant.</p>
+<p>In your output, look at the reported (estimated) residual variances. We find that the residual variance of <code>ETA4</code> is estimated to be negative. This is a Heywood case and it is causing the warning to appear. Note however, that it is significant, so ``just" fixing it to 0 as a solution is probably not warrented here.</p>
 </div>
 <div id="exercise-g" class="section level4 unnumbered">
 <h4>Exercise G</h4>
@@ -224,7 +224,7 @@ PROBLEM INVOLVING VARIABLE ETA4.</code></pre>
 <summary>
 <b>Click to show answers</b>
 </summary>
-<p>Yes, they are nested: this model is a special case of the previous model, as it is based on having <code>eta3</code> and <code>eta4</code> from the previous model now being a single latent variable. That is, the residual variance of eta 4 could be fixed to zero: this gives us 1 <em>df</em> for the difference.
+<p>Yes, they are nested: this model is a special case of the previous model, as it is based on having <code>ETA3</code> and <code>ETA4</code> from the previous model now being a single latent variable. That is, we can constrain the residual variance of <code>ETA4</code> to zero to get the alternative model. This gives us 1 <em>df</em> for the difference.
 </p>
 </div>
 <div id="exercise-j" class="section level4 unnumbered">
@@ -234,7 +234,7 @@ PROBLEM INVOLVING VARIABLE ETA4.</code></pre>
 <summary>
 <b>Click to show answers</b>
 </summary>
-<p>See the Mplus input file <code>Excercise1j.inp</code> for the model specification in Mplus. Apart from the <span class="math inline">\(\chi^{2}\)</span>-test of model fit, the model fits well:</p>
+<p>See the Mplus input file <code>Excercise J.inp</code> for the model specification in Mplus. Apart from the <span class="math inline">\(\chi^{2}\)</span>-test of model fit, the model fits well:</p>
 <ul>
 <li><span class="math inline">\(\chi^{2} (3) = 27.37\)</span>, with <span class="math inline">\(p &lt; .001\)</span>,</li>
 <li>RMSEA = 0.069,</li>
@@ -250,7 +250,7 @@ PROBLEM INVOLVING VARIABLE ETA4.</code></pre>
 <summary>
 <b>Click to show answers</b>
 </summary>
-<p>Comparing both models using the <span class="math inline">\(\Delta \chi^{2}\)</span>-test gives us <span class="math inline">\(27.37 – 13.29 = 14.0\)</span> with 1 <em>df</em> such that <span class="math inline">\(p &lt; .001\)</span>. This implies that imposing the restriction is not tenable.</p>
+<p>Comparing both models using the <span class="math inline">\(\Delta \chi^{2}\)</span>-test gives us <span class="math inline">\(27.37 – 13.29 = 14.0\)</span> with 1 <em>df</em> such that <span class="math inline">\(p &lt; .001\)</span>. This implies that imposing the restriction is not tenable. You can calculate the <em>p</em>-value of the <span class="math inline">\(\Delta \chi^{2}\)</span> using the <code>pchisq()</code>-function in R (with the <code>lower.tail</code> argument set to <code>FALSE</code>), or <a href="http://www.fourmilab.ch/rpkp/experiments/analysis/chiCalc.html">an online tool</a></p>
 <p>Comparing the models using information criteria gives us AIC = 29593 and BIC = 29637 for the first model, and AIC = 29605 and BIC = 29643 for the second. In conclusion, all measures indicate the first model is better. However, the current model makes more theoretical sense, and the negative variance estimate in the first model is a problem. For these 2 reasons, we should prefer the current model.
 </p>
 </div>
@@ -271,7 +271,7 @@ PROBLEM INVOLVING VARIABLE ETA4.</code></pre>
 <summary>
 <b>Click to show answers</b>
 </summary>
-<p>See Exercise1m.inp for the Mplus specification of this model. The <code>Y3 WITH Y4</code> parameter is an additional covariance between the residuals of <code>y3</code> and <code>y4</code> (so not between <code>y3</code> and <code>y4</code> themselves). Model fit is quite good (except for the <span class="math inline">\(\chi^{2}\)</span>-test of model fit):</p>
+<p>See <code>Exercise M.inp</code> for the Mplus specification of this model. The <code>Y3 WITH Y4</code> parameter is an additional covariance between the residuals of <code>y3</code> and <code>y4</code> (so not between <code>y3</code> and <code>y4</code> themselves). Model fit is quite good (except for the <span class="math inline">\(\chi^{2}\)</span>-test of model fit):</p>
 <ul>
 <li><span class="math inline">\(\chi^{2} (2) = 7.077\)</span>, <span class="math inline">\(p = .0291\)</span>,</li>
 <li>RMSEA = 0.038,</li>
