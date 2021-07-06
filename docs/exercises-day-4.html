@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>S23 - Day 4 I | Utrecht University Summer School S20 and S23</title>
-  <meta name="description" content="Exercises for days 4 of the Summer School S20 and S23." />
+  <title>Exercises - Day 4 | Utrecht University Summer School S20</title>
+  <meta name="description" content="Exercises for day 4 of the Summer School S20." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="S23 - Day 4 I | Utrecht University Summer School S20 and S23" />
+  <meta property="og:title" content="Exercises - Day 4 | Utrecht University Summer School S20" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Exercises for days 4 of the Summer School S20 and S23." />
+  <meta property="og:description" content="Exercises for day 4 of the Summer School S20." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="S23 - Day 4 I | Utrecht University Summer School S20 and S23" />
+  <meta name="twitter:title" content="Exercises - Day 4 | Utrecht University Summer School S20" />
   
-  <meta name="twitter:description" content="Exercises for days 4 of the Summer School S20 and S23." />
+  <meta name="twitter:description" content="Exercises for day 4 of the Summer School S20." />
   
 
 <meta name="author" content="Jeroen D. Mulder¹, Ellen Hamaker¹, &amp; Caspar J. van Lissa¹" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="the-ri-clpm.html"/>
-<link rel="next" href="i-quasi-simplex-model.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="the-mean-structure.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -73,16 +73,11 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="" data-path="s20-day-4.html"><a href="s20-day-4.html"><i class="fa fa-check"></i>S20 - Day 4</a>
+<li class="chapter" data-level="" data-path="exercises-day-4.html"><a href="exercises-day-4.html"><i class="fa fa-check"></i>Exercises - Day 4</a>
 <ul>
 <li class="chapter" data-level="" data-path="the-mean-structure.html"><a href="the-mean-structure.html"><i class="fa fa-check"></i>The mean-structure</a></li>
 <li class="chapter" data-level="" data-path="the-clpm.html"><a href="the-clpm.html"><i class="fa fa-check"></i>The CLPM</a></li>
-<li class="chapter" data-level="" data-path="the-ri-clpm.html"><a href="the-ri-clpm.html"><i class="fa fa-check"></i>the RI-CLPM</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="s23-day-4-i.html"><a href="s23-day-4-i.html"><i class="fa fa-check"></i>S23 - Day 4 I</a>
-<ul>
-<li class="chapter" data-level="" data-path="i-quasi-simplex-model.html"><a href="i-quasi-simplex-model.html"><i class="fa fa-check"></i>I Quasi-simplex model</a></li>
-<li class="chapter" data-level="" data-path="ii-clpm-ri-clpm.html"><a href="ii-clpm-ri-clpm.html"><i class="fa fa-check"></i>II CLPM &amp; RI-CLPM</a></li>
+<li class="chapter" data-level="" data-path="the-ri-clpm.html"><a href="the-ri-clpm.html"><i class="fa fa-check"></i>The RI-CLPM</a></li>
 </ul></li>
 </ul>
 
@@ -93,7 +88,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Utrecht University Summer School S20 and S23</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Utrecht University Summer School S20</a>
           </h1>
         </div>
 
@@ -101,25 +96,27 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="s23---day-4-i" class="section level1 unnumbered">
-<h1>S23 - Day 4 I</h1>
-<p>These exercises belong to day 4 of S23, ``Cross-lagged relations". The exercises consist roughly of 2 parts: first we will focus on the quasi-simplex model, and second we will focus on the random intercept cross-lagged panel model.</p>
-<p>For the quasi-simplex model we are going to study the concept of life satisfaction. The covariance matrix is in the file <code>Coenders.dat</code> and comes from 1724 children and adolescents that participated in the <em>National Survey of Child and Adolescent Well-Being</em> (NSCAW) in Russia. They indicated how satisfied they were with their lives as a whole on a 10-point scale (1 = not at all satisfied, 10 = very satisfied). There were three waves (1993, 1994 and 1995). At the third wave, the question was asked twice (with 40 minutes in between). Hence, in total there are four measurements obtained at three waves. The data and variables commands for these data should read:</p>
-<p>DATA:
-TYPE = COVARIANCE;
-FILE = Coenders.dat;
-NOBSERVATIONS = 1724;</p>
-<p>VARIABLE:
-NAMES = Y1 Y2 Y3 Y4;</p>
-<p>The researchers are interested in fitting a quasi-simplex model to these data, that is, a simplex model at the latent level, thus accounting for measurement error in the observations. This model is graphically represented in slide 19. Use the menu on the left to navigate to the exercises. The Mplus input files can found in the Summer School Dropbox-folder (<code>./Dropbox/Lab material - Day 4/S23 - Day 4 - 4MplusInputFiles</code>).</p>
+<div id="exercises---day-4" class="section level1 unnumbered">
+<h1>Exercises - Day 4</h1>
+<p>These exercises belong to day 4 of S20, ``Traits, Measurement Errors, and Time-Lags". We are going to analyze the same data that were used in the Hamaker et al. (2015) paper and were presented in the lecture. The goals of these exercises are to get some experience with fitting (random intercept) cross-lagged panel models, interpreting their results, and comparing them. Here, we focus on the relationship between <em>Parental Responsiveness</em> and <em>Adolescents’ Depressive Symptomatology</em> (note, in the lecture the focus was on a different concept, namely <em>Parental Psychological Control</em>).</p>
+<p>The data (means, standard deviations, and the correlation matrix) are included in the file <code>Soenens.dat</code>. The number of observations is 396. The data command for these data should be:</p>
+<pre><code>DATA:       
+  TYPE = MEANS STDEVIATIONS CORRELATION;   
+  FILE = Soenens.dat;
+  NOBSERVATIONS = 396;</code></pre>
+<p>The variable command should be:</p>
+<pre><code>VARIABLE:   
+  NAMES = PsCon1-PsCon3 Res1-Res3 BeCon1-BeCon3 Dep1-Dep3;
+  USEVARIABLES = Res1 Dep1 Res2 Dep2 Res3 Dep3;</code></pre>
+<p>Do the exercises. You can navigate through them using the left-hand menu or the arrows on left- and right-hand side of this screen. Answers are included below each exercise. The Mplus input files can found in the Summer School Dropbox-folder (<code>./Dropbox/Lab material - Day 4/S20 - Day 4 - 4MplusInputFiles</code>).</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="the-ri-clpm.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="i-quasi-simplex-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-mean-structure.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -161,7 +158,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["MplusSummerSchool.pdf"],
+"download": ["SummerSchoolS20.pdf"],
 "toc": {
 "collapse": "section"
 },
