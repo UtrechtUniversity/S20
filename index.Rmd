@@ -1,6 +1,6 @@
 --- 
-title: "Utrecht University Summer School S20 and S23"
-subtitle: "Exercises day 4 S20 and day 4 S23"
+title: "Utrecht University Summer School S20"
+subtitle: "Exercises"
 author: "Jeroen D. Mulder¹, Ellen Hamaker¹, & Caspar J. van Lissa¹"
 date: "¹Utrecht University, Methodology & Statistics"
 site: bookdown::bookdown_site
@@ -18,7 +18,7 @@ documentclass: book
 bibliography: [references.bib]
 biblio-style: apalike
 link-citations: yes
-description: "Exercises for days 4 of the Summer School S20 and S23."
+description: "Exercises for day 4 of the Summer School S20."
 ---
 
 ```{r global_options, include=FALSE}
@@ -27,8 +27,8 @@ knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 
 # Introduction{-}
 
-These course materials are part of the [Introduction to Structural Equation Modeling using Mplus (S20)](https://utrechtsummerschool.nl/courses/social-sciences/introduction-to-structural-equation-modeling-using-mplus) and the [Advanced Course on using Mplus (S23)](https://utrechtsummerschool.nl/courses/social-sciences/advanced-course-on-using-mplus) courses. Both are five-day summer school courses hosted by Utrecht University's department of Methodology and Statistics. The main objective of the introductory course (S20) is to learn how to analyze several models with Mplus (e.g. path models, multiple group models, mediation and moderation, confirmatory factor analysis, and longitudinal models). More in-depth lectures on the fundamentals of Mplus and advanced longitudinal models are discussed in the advanced course (S23). 
+These course materials are part of the course [Introduction to Structural Equation Modeling using Mplus (S20)](https://utrechtsummerschool.nl/courses/social-sciences/introduction-to-structural-equation-modeling-using-mplus). It is a five-day summer school course hosted by Utrecht University's department of Methodology and Statistics. The main objective is to learn how to analyze several models with Mplus (e.g. path models, multiple group models, mediation and moderation, confirmatory factor analysis, and longitudinal models). More in-depth lectures on the fundamentals of Mplus and advanced longitudinal models are discussed in the [advanced course (S23)](https://utrechtsummerschool.nl/courses/social-sciences/advanced-course-on-using-mplus). 
 
-Using the menu on the left, you can navigate to exercises of day 4 of S20 and S23. 
+Using the menu on the left, you can navigate to exercises of day 4 of S20. 
 
 
