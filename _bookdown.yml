@@ -1,6 +1,6 @@
-book_filename: "SummerSchoolS20"
+book_filename: "S20"
 rmd_files: ["index.Rmd",
-"20210619_Education_SummerSchoolS20_Day4.Rmd"]
+"day4.Rmd"]
 language:
   ui:
     chapter_name: ""

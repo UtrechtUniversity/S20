@@ -1,4 +1,4 @@
-# Exercises - Day 4{-}
+# Day 4: Traits, timing, and measurement error {-}
 
 ```{r setup, include=FALSE}
 library(knitr)
@@ -8,32 +8,36 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, results = "hide", eval =
 options(digits = 2)
 ```
 
-These exercises belong to day 4 of S20, ``Traits, Measurement Errors, and Time-Lags". We are going to analyze the same data that were used in the Hamaker et al. (2015) paper and were presented in the lecture. The goals of these exercises are to get some experience with fitting (random intercept) cross-lagged panel models, interpreting their results, and comparing them. Here, we focus on the relationship between *Parental Responsiveness* and *Adolescents’ Depressive Symptomatology* (note, in the lecture the focus was on a different concept, namely *Parental Psychological Control*). 
+In this computer lab are going to analyze the same data that were used in the Hamaker et al. (2015) paper and were presented in the lecture. The goals of these exercises are to get some experience with fitting (random intercept) cross-lagged panel models, interpreting their results, and comparing them. Here, we focus on the relationship between *Parental Responsiveness* and *Adolescents’ Depressive Symptomatology* (note, in the lecture the focus was on a different concept, namely *Parental Psychological Control*). 
 
-The data (means, standard deviations, and the correlation matrix) are included in the file `Soenens.dat`. The number of observations is 396. The data command for these data should be:
+The data (means, standard deviations, and the correlation matrix) are included in the file `Soenens.dat` on SURFdrive. The number of observations is 396. The data command for these data should be:
 
-    DATA:       
-      TYPE = MEANS STDEVIATIONS CORRELATION;   
-      FILE = Soenens.dat;
-      NOBSERVATIONS = 396;
+```
+DATA:       
+  TYPE = MEANS STDEVIATIONS CORRELATION;   
+  FILE = Soenens.dat;
+  NOBSERVATIONS = 396;
+```
 
 The variable command should be:
 
-    VARIABLE:   
-      NAMES = PsCon1-PsCon3 Res1-Res3 BeCon1-BeCon3 Dep1-Dep3;
-      USEVARIABLES = Res1 Dep1 Res2 Dep2 Res3 Dep3;
+```
+VARIABLE:   
+  NAMES = PsCon1-PsCon3 Res1-Res3 BeCon1-BeCon3 Dep1-Dep3;
+  USEVARIABLES = Res1 Dep1 Res2 Dep2 Res3 Dep3;
+```
 
-Do the exercises. You can navigate through them using the left-hand menu or the arrows on left- and right-hand side of this screen. Answers are included below each exercise. The Mplus input files can found in the Summer School Dropbox-folder (`./Dropbox/Lab material - Day 4/S20 - Day 4 - 4MplusInputFiles`). 
+Do the exercises. You can navigate through them using the left-hand menu or the arrows on left- and right-hand side of this screen. Answers are included below each exercise. The Mplus input files can found in the SURFdrive folder. 
 
-## The mean-structure{-}
+## Exercise 1: The mean-structure{-}
 
-#### Exercise 1{-}
-Specify a model in which you investigate whether the group *means* can be constrained across time. Does this model fit? Tip: allow all variables to covary with each other (i.e. putting not constraints on the covariance structure) such that we are estimating means, and not intercepts.
+#### Exercise 1A{-}
+Specify a model in which you investigate whether the group *means* can be constrained across time. Does this model fit? Tip: Allow all variables to covary with each other (i.e. specify a model without constraints on the covariance structure) such that we are estimating means, and not intercepts.
 
 <details>
   <summary><b>Click to show answers</b></summary>
 
-The model specification is given below. The model does not fit well, according to the $\chi^{2}$ and the RMSEA; CFI and TLI indicate a good and barely acceptable model fit, respectively. See the slides of day 1 of this summer school if you need a refresher on the recommended cutoff values for these fit indices (although such cutoff recommendations remain a hotly debated topic among statisticians). 
+The model specification is given in `exercise1A.inp` on SURFdrive. The model does not fit well, according to the $\chi^{2}$ and the RMSEA; CFI and TLI indicate a good and barely acceptable model fit, respectively. See the slides of day 1 of this summer school if you need a refresher on the recommended cutoff values for these fit indices (although such cutoff recommendations remain a hotly debated topic among statisticians). 
 
 - $\chi^{2}$ (4) = 19.620, $p < .001$
 - RMSEA = 0.099
@@ -42,7 +46,7 @@ The model specification is given below. The model does not fit well, according t
 
 `r if(knitr::is_html_output()){"\\details"}`
 
-#### Exercise 2{-}
+#### Exercise 1B{-}
 What can you do to improve the model fit?
 
 <details>
@@ -54,48 +58,48 @@ Based on the Mplus output, it appears that freeing the mean of `Dep1` leads to t
 
 `r if(knitr::is_html_output()){"\\details"}`
 
-#### Exercise 3{-}
+#### Exercise 1C{-}
 
 Run the adjusted model and discuss the results.
 
 <details>
   <summary><b>Click to show answers</b></summary>
 
-Syntax for the adjusted model is in `Means2.inp`. Looking at the fit indices of the adjusted model, the chi-square for this model is still significant, but all other measures indicate the model fit is okay to excellent. Moreover, the model is a significant improvement in comparison to the previous model: $\Delta\chi^{2} = 19.62 - 8.71 = 10.91$, with $\Delta$*df* = 1 and, $p = .001$. 
+Syntax for the adjusted model is in `exercise1C.inp`. Looking at the fit indices of the adjusted model, the chi-square for this model is still significant, but all other measures indicate the model fit is okay to excellent. Moreover, the model is a significant improvement in comparison to the previous model: $\Delta\chi^{2} = 19.62 - 8.71 = 10.91$, with $\Delta$*df* = 1 and, $p = .001$. 
 
 You can calculate the *p*-value of the $\Delta \chi^{2}$ using the `pchisq()`-function in R (with the `lower.tail` argument set to `FALSE`), or [an online tool](http://www.fourmilab.ch/rpkp/experiments/analysis/chiCalc.html)
 
 `r if(knitr::is_html_output()){"\\details"}`
 
-## The CLPM{-}
+## Exercise 2: The CLPM{-}
 
-#### Exercise 4{-}
+#### Exercise 2A{-}
 
-![The cross-lagged panel model.](CLPM2.png){width=400px}
+![The cross-lagged panel model.](figures/CLPM2.png){width=400px}
 
 Specify the CLPM in Mplus. Regress the observed variables directly on each other over time, as in the graph above. Try to think of where each parameter you estimate should go in the graph.
 
 <details>
   <summary><b>Click to show answers</b></summary>
 
-The input for this models can be found in `CLPM.inp`.
+The input for this models can be found in `exercise2A.inp`.
 
 `r if(knitr::is_html_output()){"\\details"}`
 
-#### Exercise 5{-}
+#### Exercise 2B{-}
 
-Specify the model as in the graph below (the CLPM with centered latent variables), and again include the (significant) parameter estimates in this graph. Tip: do not forget to constrain the measurement error variances of the observed variables to 0. 
+Specify the model as in the graph below (the CLPM with centered latent variables), and again include the (significant) parameter estimates in this graph. Tip: Do not forget to constrain the measurement error variances of the observed variables to 0. 
 
-![The cross-lagged panel model with centered latent variables.](CLPM-centered.png){width=400px}
+![The cross-lagged panel model with centered latent variables.](figures/CLPM-centered.png){width=400px}
 
 <details>
   <summary><b>Click to show answers</b></summary>
 
-The input for this models can be found in `CLPMalt.inp`.
+The input for this models can be found in `exercise2B.inp`.
 
 `r if(knitr::is_html_output()){"\\details"}`
 
-#### Exercise 6{-}
+#### Exercise 2C{-}
 
 The two models should lead to the exact same model fit. Estimate the model and discuss the model fit. When comparing the parameter estimates, what is the difference between the model in question 4 and the model in question 5?
 
@@ -106,7 +110,7 @@ Model 5 is, just like model 4, a traditional CLPM, but specified in such a way t
 
 `r if(knitr::is_html_output()){"\\details"}`
 
-#### Exercise 7{-}
+#### Exercise 2D{-}
 Which parameter estimates differ? How can they be related?
 
 
@@ -117,15 +121,15 @@ The difference in parameter estimates is in the means/intercepts. For the first 
 Again, the reason for this is that in the first model, the means at wave 2 and 3 are partly predicted by the means from previous waves (through the lagged relationships). Therefore, the constants that are estimated should be interpreted as intercepts. In the second model, the mean part (triangles) and the regression part (lagged parameters) are separated.
 `r if(knitr::is_html_output()){"\\details"}`
 
-#### Exercise 8{-}
+#### Exercise 2E{-}
 Constrain the means in the second version of the CLPM. Please do not constrain the mean of `Dep1`, however, as this constraint proved untenable in exercise 3. Discuss the model fit.
 
 <details>
   <summary><b>Click to show answers</b></summary>
-The input for these models are in `CLPMalt2.inp`. The chi-square has increased in comparison with the previous model: The reason is that this is a restricted model (a special case of the previous model). We can test whether the increase in misfit is significant using the chi-square difference test: $\Delta\chi^{2} = 69.59 - 62.98 = 6.61$ with $\Delta$*df* = 7 – 4 = 3, $p = .0854$. Hence, the constraints are tenable. We can also look at information criteria such as the AIC or BIC. The model with the lowest AIC or BIC is preferred.
+The input for these models are in `exercise2E.inp`. The chi-square has increased in comparison with the previous model: The reason is that this is a restricted model (a special case of the previous model). We can test whether the increase in misfit is significant using the chi-square difference test: $\Delta\chi^{2} = 69.59 - 62.98 = 6.61$ with $\Delta$*df* = 7 – 4 = 3, $p = .0854$. Hence, the constraints are tenable. We can also look at information criteria such as the AIC or BIC. The model with the lowest AIC or BIC is preferred.
 `r if(knitr::is_html_output()){"\\details"}`
 
-#### Exercise 9{-}
+#### Exercise 2F{-}
 Continue with the model from the previous question and constrain all the lagged parameters between wave 1 and 2 to be identical to the lagged parameters between wave 2 and 3. Discuss the model fit, and compare this model to the previous one to see whether the constraint holds.
 
 <details>
@@ -135,30 +139,30 @@ The input for these models are in `CLPMalt3.inp`. The chi-square has again incre
 If we stick to an alpha of .05, the constraints must be rejected (as the increase in misfit is significant). Note that we are doing several model comparisons here, so one could also argue that we should use a smaller alpha to guard against an inflated overall type I error. Again, an alternative would be to use information criteria for model comparisons.
 `r if(knitr::is_html_output()){"\\details"}`
 
-## The RI-CLPM{-}
+## Exercise 3: The RI-CLPM{-}
 
-#### Exercise 10{-}
+#### Exercise 3A{-}
 Specify the RI-CLPM for these data (without any constraints on the lagged parameters over time). Discuss the model fit.
 
 <details>
   <summary><b>Click to show answers</b></summary>
-The input for these models are in `RICLPM.inp`. This model fits very well; however, it only has 1 *df*, so it is not doing much for data reduction.
+The input for these models are in `exercise3A.inp`. This model fits very well; however, it only has 1 *df*, so it is not doing much for data reduction.
 `r if(knitr::is_html_output()){"\\details"}`
 
-#### Exercise 11{-}
+#### Exercise 3B{-}
 Specify the RI-CLPM with the constraints on the grand means at each occasions. Again, please do not constrain the mean of `Dep1`, however, as this constraint proved untenable in exercise 3.
 
 <details>
   <summary><b>Click to show answers</b></summary>
-The input for these models are in `RICLPM2.inp`. This model has an acceptable (RMSEA, $\chi^{2}$) to good (CFI and TLI) fit.  Comparing it to the previous model, we get a chi-square difference test of $\Delta\chi^{2} = 9.590 - 0.84 = 8.75$, $\Delta$*df* = 4 - 1 = 3, $p = .0328$. This implies that the constraints we impose on the means are untenable (they lead to a significant worsening of model fit). You might therefore decide to ultimately not impose these constraints. However, for didactical reasons, we continue with these constraints in place in the next exercise. 
+The input for these models are in `exercise3B.inp`. This model has an acceptable (RMSEA, $\chi^{2}$) to good (CFI and TLI) fit.  Comparing it to the previous model, we get a chi-square difference test of $\Delta\chi^{2} = 9.590 - 0.84 = 8.75$, $\Delta$*df* = 4 - 1 = 3, $p = .0328$. This implies that the constraints we impose on the means are untenable (they lead to a significant worsening of model fit). You might therefore decide to ultimately not impose these constraints. However, for didactical reasons, we continue with these constraints in place in the next exercise. 
 `r if(knitr::is_html_output()){"\\details"}`
 
-#### Exercise 12{-}
+#### Exercise 3C{-}
 Add the constraints on the lagged parameters to the previous model.
 
 <details>
   <summary><b>Click to show answers</b></summary>
-The input for these models are in `RICLPM3.inp`. This model fits okay (depending on the measure). Comparing it to the previous model, we get $\Delta\chi^{2} = 19.74 - 9.59 = 8.15$, $\Delta$*df* = 8 - 4 = 4, $p = .0379$. Again, this implies that constraining the lagged effects to be time-invariant is untenable (it leads to a significant worsening of model fit).
+The input for these models are in `exercise3C.inp`. This model fits okay (depending on the measure). Comparing it to the previous model, we get $\Delta\chi^{2} = 19.74 - 9.59 = 8.15$, $\Delta$*df* = 8 - 4 = 4, $p = .0379$. Again, this implies that constraining the lagged effects to be time-invariant is untenable (it leads to a significant worsening of model fit).
 `r if(knitr::is_html_output()){"\\details"}`
 
 #### Exercise 13{-}
@@ -172,11 +176,11 @@ Based on the AIC, the RI-CLPM without any constraints provides the closest fit t
 
 | Exercise | Input file   | AIC    | BIC   |
 | :------- | :----------: | :----: | :----:
-| 1        | Means.inp    | 9451   | 9543 |
-| 3        | Means2.inp   | 9442   | 9538 |
-| 6        | CLPM.inp and CLPMalt.inp | 9494 | 9586 |
-| 7        | CLPMalt2.inp | 9495   | 9575 | 
-| 8        | CLPMalt3.inp | 9499   | 9563 | 
-| 9        | RICLPM.inp   | **9438** | 9541 | 
-| 10       | RICLPM2.inp  | 9441   | 9533 | 
-| 11       | RICLPM3.inp  | 9443   | **9518** | 
+| 1        | exercise1A.inp    | 9451   | 9543 |
+| 3        | exercise1C.inp   | 9442   | 9538 |
+| 6        | exercise2A.inp and exercise2B.inp | 9494 | 9586 |
+| 7        | exercise2E.inp | 9495   | 9575 | 
+| 8        | exercise2F.inp | 9499   | 9563 | 
+| 9        | exercise3A.inp   | **9438** | 9541 | 
+| 10       | exercise3B.inp  | 9441   | 9533 | 
+| 11       | exercise3C.inp  | 9443   | **9518** | 

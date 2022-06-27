@@ -1,8 +1,8 @@
 --- 
-title: "Utrecht University Summer School S20"
-subtitle: "Exercises"
-author: "Jeroen D. Mulder¹, Ellen Hamaker¹, & Caspar J. van Lissa¹"
-date: "¹Utrecht University, Methodology & Statistics"
+title: "Utrecht Summer School S20"
+subtitle: "Introduction to Structural Equation Modeling using Mplus"
+author: "Jeroen D. Mulder and Ellen L. Hamaker"
+date: "July 4th - 8th, 2022"
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
@@ -18,7 +18,7 @@ documentclass: book
 bibliography: [references.bib]
 biblio-style: apalike
 link-citations: yes
-description: "Exercises for day 4 of the Summer School S20."
+description: "Exercises for the computer labs of the Utrecht Summer School course ``Introduction to Structural Equation Modeling using Mplus''."
 ---
 
 ```{r global_options, include=FALSE}
