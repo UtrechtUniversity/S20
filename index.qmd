@@ -1,0 +1,11 @@
+---
+title: "Introduction to Structural Equation Modeling using Mplus"
+author: 
+  - Jeroen D. Mulder
+  - Beth Grandfield
+  - Ellen L. Hamaker
+---
+
+These course materials are part of the course [Introduction to Structural Equation Modeling using Mplus (S20)](https://utrechtsummerschool.nl/courses/social-sciences/introduction-to-structural-equation-modeling-using-mplus). It is a five-day summer school course hosted by Utrecht University's department of Methodology and Statistics. The main objective is to learn how to analyze several models with Mplus (e.g. path models, multiple group models, mediation and moderation, confirmatory factor analysis, and longitudinal models). More in-depth lectures on the fundamentals of Mplus and advanced longitudinal models are discussed in the [advanced course (S23)](https://utrechtsummerschool.nl/courses/social-sciences/advanced-course-on-using-mplus).
+
+Using the menu on the left, you can navigate to the exercises of each day.

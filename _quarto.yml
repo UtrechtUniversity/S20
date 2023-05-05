@@ -1,0 +1,29 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Utrecht Summer School (S20)"
+  reader-mode: true
+  sidebar:
+    style: "floating"
+    search: true
+    contents:
+      - href: index.qmd
+        text: Home
+      - section: "Day 1"
+      - section: "Day 2"
+      - section: "Day 3"
+      - section: "Day 4"
+        contents:
+          - day4_introduction.qmd
+          - day4_exercises.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+
