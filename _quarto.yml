@@ -14,6 +14,9 @@ website:
       - section: "Day 1"
       - section: "Day 2"
       - section: "Day 3"
+        contents:
+          - day3_part1.qmd
+          - day3_part2.qmd
       - section: "Day 4"
         contents:
           - day4_introduction.qmd
