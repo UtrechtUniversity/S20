@@ -1,0 +1,13 @@
+---
+title: "Introduction"
+subtitle: "Day 1: Getting started with Mplus"
+editor: source
+---
+
+The first exercise of today makes an explicit comparison on how certain analyses look in the software you’re used to (e.g., SPSS, Excel, SAS, STATA, R) and how the corresponding analyses look in Mplus. The aim is to understand the similarities between software packages, and the extensions that Mplus offers. Most exercises include SPSS syntax and Mplus setup. Feel free to use the windows interface in SPSS, or your own software.     
+
+The second exercise is aimed at doing a multivariate multiple regression analysis yourself in Mplus and to compose a `.dat` file suited for usage in Mplus.    
+
+The third exercise will make you familiar with the `TECH1` output and shows that communicating with Mplus can be confusing and misleading sometimes.    
+
+All the data you need, as well as output files, can be found in SURFdrive. Make sure to unzip the files on your computer. 

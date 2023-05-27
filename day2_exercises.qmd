@@ -1,0 +1,417 @@
+---
+title: "Exercises"
+subtitle: "Day 2: EFA, multiple group models & measurement invariance"
+editor: source
+---
+
+## Replicating Sapi results
+The file `Sapi.dat` contains the data that were used to conduct the EFA and CFA as presented in the lecture this morning. Try to replicate the following input files and/or results of today’s presentation and see what happens to the results. To prevent issues, make sure you specify in each of the to be replicated slides the value for missing data: `MISSING ARE ALL (-999)`. Always double check by looking in the data set.
+
+### Exercise 1A
+On slide 10, the input for the extraversion model is shown. Try to replicate the results for this model.    
+
+::: {.callout-caution collapse="true"}
+### Answer
+The correct `MODEL` command for the confirmatory factor model is displayed on slide 10. The correct factor loadings for this model are shown on slide 11. The entire input and output files can be found on the SURFdrive. 
+:::
+
+### Exercise 1B
+On slide 12, a Wald test is used to test whether two factor loadings can be considered equal. Include this test in your model and interpret the results.
+
+::: {.callout-caution collapse="true"}
+### Answer
+The correct `MODEL` command for the Wald test is displayed on slide 12. The results of the Wald test are shown on slide 13. The entire input and output files can be found on the SURFdrive. 
+:::
+
+### Exercise 1C
+Check the output of the Confirmatory Factor model of Exercise A: Was the latent variable scaled via the variance of the factor (fixed factor	scaling), or via the factor loadings (marker variable scaling)?      
+
+Adjust the model so that you scale in the other way. That is, if Exercise 1A was scaled by fixing a factor loading to 1, then free this factor loading and fix the factor variance to 1. If part a was scaled by fixing the factor variance to 1, free the factor variance, and fix one of the factor loadings to 1.     
+	
+As a bonus, scale via the factor loadings again, but now fix another factor loading to 1 than before, and free the factor loading that was previously fixed to 1. Based on your results, fill out the table below. What do you notice?     
+
+Scaling Method | Chi-square, df, p-value | Factor loading Q77 | Factor loading Q84 | Factor loading Q170 | Factor loading Q196 | Factor variance
+:-- | :-- | :-- | :-- | :-- | :-- | :--
+Reference Group | | | | | |  
+Marker Variable | | | | | |  
+Marker Variable Bonus | | | | | |  
+
+::: {.callout-caution collapse="true"}
+### Answer
+Scaling Method | Chi-square, df, p-value | Factor loading Q77 | Factor loading Q84 | Factor loading Q170 | Factor loading Q196 | Factor variance
+:-- | :-- | :-- | :-- | :-- | :-- | :--
+Reference Group | 57.075, 2, ~0.000| 0.835 | 0.591 | 0.473 | 0.619 | 1  
+Marker Variable | 57.075, 2, ~0.000| 1 | 0.708 | 0.567 | 0.742 | 0.696  
+Marker Variable Bonus | 57.075, 2, ~0.000 | 1.347 | 0.953 | 0.764 | 1 | 0.384      
+
+The first thing you will notice is that all chi-square fit results are exactly the same across the models. This is because the different ways of scaling all result in equivalent statistical model fit.      
+
+The second thing you may notice is that the values of the loadings have changed. However, loadings that are relatively large (or small) in one model, are also relatively large (or small) in the other models. For example, in each model, the loading for Q77 is ~1.4 times as large as the loading of Q84.     
+
+The take home message is that model fit is not influenced by how you set scale. The parameter estimates change.
+:::
+
+### Exercise 1D
+On slide 16, a CFA with categorical variables is specified. Try to replicate this and compare the conclusions of this analysis with the results when categorical variables are not specified. Important note: The categorical and continuous models cannot be formally compared with Chi-square tests or information criteria. So stick to your interpretations/conclusions when you compare the results.    
+
+::: {.callout-caution collapse="true"}
+### Answer
+EMPTY
+:::
+
+### Exercise 1E
+Specify an exploratory factor model (EFA), as was shown on slide 24-25.      
+
+::: {.callout-note}
+If you want to run this analysis in the Mplus demo version, remove the variables Q196 and Q98 from the `USEVARIABLES` command in the model specification.
+:::
+
+::: {.callout-caution collapse="true"}
+### Answer
+The correct input is displayed on slide 25. The correct resulting factor loadings are displayed on slide 26. Furthermore, the correct model fit results are displayed on slide 29.     
+
+If you ran the analysis in the Mplus demo version(without variables Q196 and Q98), the correct output is shown below:      
+
+```default
+           GEOMIN ROTATED LOADINGS (* significant at 5% level)
+                  1             2
+              ________      ________
+ Q77            0.981*        0.000
+ Q84            0.381*        0.245*
+ Q170           0.208*        0.256*
+ Q44           -0.162*        0.634*
+ Q63            0.030         0.532*
+ Q76            0.005         0.542*
+
+
+           GEOMIN FACTOR CORRELATIONS (* significant at 5% level)
+                  1             2
+              ________      ________
+      1         1.000
+      2         0.476*        1.000
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.000
+          90 Percent C.I.                    0.000  0.042
+          Probability RMSEA <= .05           0.980
+
+CFI/TLI
+
+          CFI                                1.000
+          TLI                                1.004
+
+
+           GEOMIN FACTOR CORRELATIONS (* significant at 5% level)
+                  1             2
+              ________      ________
+      1         1.000
+      2         0.476*        1.000
+```
+
+:::
+
+### Exercise 1F
+On slide 33 a confirmatory factor analysis was performed, try to replicate this model as well.    
+
+::: {.callout-caution collapse="true"}
+### Answer
+The correct `MODEL` command is displayed on slide 33. The correct resulting model fit is displayed on slide 34. Furthermore, the factor loading results are displayed on slide 35. 
+:::
+
+## Multigroup regression
+In this exercise we extend the regression analysis of yesterday’s analysis to a multigroup analysis. You want to predict levels of socially desirable answering patterns of adolescents (`sw`) by overt (`overt`) and covert antisocial behaviour (`covert`), for males and females. Use the data file `popular_regr_1.dat`. **Always double check the missing data code by looking in the data set.**   
+
+### Exercise 2A
+Create a new Mplus syntax for a multiple group comparison between males and females to answer the question whether there are differences in the regression coefficients between `sw` and `overt.`   
+
+The Mplus syntax should look as follows:    
+```default
+DATA:   […]
+
+VARIABLE:
+  NAMES = respnr Dutch gender sw covert overt;
+  USEVARIABLES = sw covert overt;
+  MISSING = ALL (99); 
+  GROUPING = gender (0 = male 1 = female);
+  
+MODEL:
+  sw ON covert overt;
+
+OUTPUT:
+  CINTERVAL STDYX;
+```  
+
+You will now get results for males and females separately. Interpret all the output and compare the results for males and females. Are there differences between males and females? What do the confidence intervals indicate?  
+
+::: {.callout-caution collapse="true"}
+### Answer
+The effect of `covert` on `sw` appears to be stronger for females (-0.478) than males (-0.438) and reverse for the effect of `overt` (-0.161 for males compared to -0.112 for females). However, the confidence intervals for `SW` on `Covert` and `Overt` show a large overlap for males and females. Additionally, the regression coefficients for the males are included in the confidence intervals for the females and vice versa. With this in mind, in the next question we are going to test whether the differences between `sw ON covert` and `se ON overt` are statistically significant. 
+:::
+
+### Exercise 2B
+If you want to compute a significance test to test whether the regression coefficient between `sw` and `covert` is the same or not, you can use the following syntax:     
+
+```default
+DATA:     […]
+
+VARIABLE: NAMES = respnr Dutch gender sw covert overt;
+          USEVARIABLES = sw covert overt;
+          MISSING = ALL (99); 
+          GROUPING = gender (0 = male 1 = female);
+          
+MODEL:    sw ON covert overt;
+          model male:
+          sw ON covert (b1);
+          sw ON overt;
+          model female:
+          sw ON covert (b2);
+          sw ON overt;
+          
+MODEL TEST: b1 = b2;
+
+OUTPUT:
+```
+
+In this syntax, the model for males and females is given separately by adding `MODEL MALE:` and `MODEL FEMALE:`. The (b1) and (b2) means that a label is given to the regression parameters of interest.       
+
+Using the `MODEL TEST` command you can test whether these coefficients are significantly different from each other. Inspecting the Wald Test of Parameter Constraints in the model fit output of Mplus gives you the results of this equality test. You can also do the tests manually, as was done in the lecture today. The results are similar. What do you conclude about the equality of regression parameters b1 and b2?
+
+::: {.callout-caution collapse="true"}
+### Answer
+Mplus gives the following result:    
+
+```default
+Wald Test of Parameter Constraints
+       
+  Value                             1.035
+  Degrees of Freedom                1
+  P-Value                           0.3090
+```
+
+The Wald test tests whether the constraint holds (so whether b1 and b2 are equivalent). This test is non-significant, so we conclude that there is no evidence for a difference among b1 and b2.
+:::
+
+## Measurement Invariance
+In this exercise you will evaluate measurement invariance of the Prolonged Grief Disorder scale. Use:  
+
+```default
+DATA:     	
+  FILE = PGDdata2.dat;
+  
+VARIABLE: 	
+  MISSING = ALL (-999);
+  NAMES = Kin2 b1pss1 b2pss2 b3pss3 b4pss4 b5pss5;
+```
+     
+The 5 items are taken from the Inventory of Complicated Grief [@boelen_prolonged_2010].  
+
+1. Yearning; 
+2. Part of self died; 
+3. Difficulty accepting the loss; 
+4. Avoiding reminders of deceased; 
+5. Bitterness about the loss       
+
+### Exercise 3A
+Run a one-factor confirmatory factor analysis on the data set ignoring the multigroup structure (`USEVARIABLES ARE b1pss1 b2pss2 b3pss3 b4pss4 b5pss5;`) using the default parameterization and answer the following questions: 
+
+1. How many subjects are there?    
+2. How about the fit of the model?    
+3. Which item has the weakest contribution to the latent factor (in terms of standardized factor loading)? 
+
+::: {.callout-caution collapse="true"}
+### Answer
+1. There are 571 subjects. 
+2. Using the rules of thumb provided in yesterday's lecture slides, we can conclude that the fit of the model is acceptable (RMSEA < .06, SRMR < .08, CFI/TLI > .95).    
+3. Item 2 has the weakest contribution to the factor. Its standardized factor loading is 0.494, the factor explains 24.4% of its variance.   
+:::
+
+### Exercise 3B
+Run a one-factor confirmatory factor analysis on the data set with the multigroup structure using the default specifications of Mplus: `GROUPING IS Kin2 (1 = partner 0 = else);`. See the slides for how to test for configural, metric and scalar invariance using the Mplus shortcut commands. Answer the following questions:    
+
+1. How many subjects are there per group?
+2. How is the model fit in the configural, metric and scalar invariant models? 
+
+::: {.callout-caution collapse="true"}
+### Answer
+There are 190 subjects in the group `ELSE` and 379 in the group `PARTNER.`
+
+The configural model fits the data ($\chi^{2} = 11.329$, $p = .33$). From there on, you evaluate whether the more constrained model does not fit the data worse than the less constrained model. The statistics below show that the metric invariance model does not fit worse than the configural model, and after that, that the scalar model does not fit worse than respectively the configural and the metric model. 
+
+In SEM, we always prefer parsimony: the model with the most df. Thus, we prefer the scalar invariance model, where both factor loadings and intercepts are constrained . Since the latent variable in the scalar model means the same thing across the two groups, we can compare values on the latent variable.
+
+```
+                                          Degrees of
+Models Compared              Chi-square    Freedom     P-value
+
+Metric against Configural         8.088     4       0.0884
+Scalar against Configural        12.968     8       0.1130
+Scalar against Metric             4.880     4   	  0.2998
+```
+
+:::
+
+### Exercise 3C
+Try to add constraints such that also the residual variances are constrained to be the same for both groups. Did the model get significantly worse? Check for AIC, BIC differences and use the chi-square difference test ($\Delta \chi^{2}$) that was discussed yesterday.    
+ 
+
+::: {.callout-caution collapse="true"}
+### Answer
+Constraining the residual variances can be achieved with the following syntax:   
+
+```default
+MODEL partner:
+  b1pss1(a);
+  b2pss2(b); 
+  b3pss3(c); 
+  b4pss4(d); 
+  b5pss5(e);
+
+MODEL else:
+  b1pss1(a);
+  b2pss2(b); 
+  b3pss3(c); 
+  b4pss4(d); 
+  b5pss5(e);
+```
+
+This yields the following Chi-Square Test of Model Fit:    
+
+```default
+Value                             34.565
+Degrees of Freedom                23
+P-Value                           0.0574
+
+Akaike (AIC)                    6485.343
+Bayesian (BIC)                  6559.189
+```
+
+The scalar model (see Exercise 3B) yields the following statistics:    
+
+```default
+Information Criteria
+
+          Akaike (AIC)                    6485.075
+          Bayesian (BIC)                  6580.640
+
+Chi-Square Test of Model Fit
+
+          Value                             24.297
+          Degrees of Freedom         18
+          P-Value                           0.1455
+```
+
+$\Delta \chi^{2} (5) = 10.268$, $p = .0622$, so the model is not significantly worse. Residual variances are also equal. We always prefer a more parsimonious model (i.e., more *df*) when we compare two models. You can use http://www.fourmilab.ch/rpkp/experiments/analysis/chiCalc.html to obtain the p-value for the $\Delta \chi^{2}$-test.
+:::
+
+## Bonus
+
+### Exercise B1
+Using the file `popular_factor.dat` run an EFA that provides you with a one-factor and a two-factor solution. Interpret the results for the two-factor solution. The syntax file should look something like this:   
+
+```default
+DATA:         FILE = your.filename.dat;
+
+VARIABLE:  
+  NAMES = c1-c3 o1-o3;
+  MISSING = ALL (99);
+
+ANALYSIS:	    TYPE = EFA 1 2;
+
+OUTPUT:       SAMPSTAT TECH1;
+```
+
+::: {.callout-note}
+In `TYPE = EFA 1 2;`, the first number specifies the smallest amount of factors you are interested in, and the second number specifies the maximum amount of factors you are interested in. So, `EFA 1 2` will provide you with a 1- and 2-factor solution. `EFA 2 5` would provide you with a  2-, 3-, 4-, and 5-factor solution. `EFA 2 2` would provide you with only a 2-factor solution.
+:::
+
+::: {.callout-caution collapse="true"}
+### Answer
+From the output, we can conclude that the 2-factor structure fits well to the data (Chi-Square Test of Model Fit is not significant, CFI/TLI is  > 0.95, and RMSEA is < 0.05). 
+:::
+
+### Exercise B2
+Now, run a CFA in Mplus with one factor, and another model with two factors (use again `popular_factor.dat`). The input file for the 2-factor model should look like this:
+
+```default
+DATA:         FILE = your.filename.dat;
+VARIABLE: 
+  NAMES = c1-c3 o1-o3;
+  MISSING = ALL (99);
+  
+MODEL:
+  covert by c1* c2 c3;
+  overt by o1* o2 o3;
+
+  [covert@0];
+  [overt@0];
+
+  covert@1;
+  overt@1; 
+
+OUTPUT:       SAMPSTAT STAND TECH1;
+```
+
+The input file for the one-factor model should look like this:
+
+```default
+DATA:         FILE = your.filename.dat;
+
+VARIABLE: 
+  NAMES = c1-c3 o1-o3;
+  MISSING = ALL (99);
+
+MODEL:
+  anti by c1* c2 c3 o1 o2 o3;
+
+  [anti@0];
+  anti@1; 
+
+OUTPUT:       SAMPSTAT STAND TECH1;
+```
+
+:::{.callout-note}
+In both models we have scaled in this model by fixing the factor variance, rather than fixing a loading.
+:::
+
+Answer the following questions:     
+
+- Which model is to be preferred? What can you say about the model fit based on the AIC and BIC?
+- What is the correlation between the two factors?
+
+::: {.callout-caution collapse="true"}
+### Answer
+Comparing the two models (1-, and 2-factor) by looking at the AIC/BIC, the 2-factor solution is preferred: The AIC/BIC of the 2-factor model is lower than the AIC/BIC of the 1-factor model. 
+
+The correlation between `OVERT` and `COVERT` is 0.431 with a standard error of 0.055. So, the proportion of shared variance is 0.4312 = 0.186 = 18,6\%. Note that in the output above we find this under `STANDARDIZED RESULS`. Whether the unstandardized `OVERT WITH COVERT` can be interpreted as a correlation or a covariance, depends on how the latent variable was scaled. If the factor variances are fixed to 1 (scaling is done via the factor variances), then the unstandardized result reflects the factor correlation, otherwise they reflect the covariance.
+:::
+
+### Exercise B3
+Run a confirmatory factor analysis with two factors as in Exercise B2, but now define the items as categorical. Are there fundamental differences compared to the previous model where we assumed the items are continuous variables?  
+
+:::{.callout-important}
+The categorical and continuous models cannot be formally compared with Chi-square tests or information criteria. So stick to your interpretations/conclusions when you compare the results.
+:::
+
+```default
+DATA:        FILE = data_factor.dat;
+
+VARIABLE: 
+  NAMES = c1-c3 o1-o3;
+  MISSING = ALL (99);
+  CATEGORICAL = all;
+
+MODEL:
+  covert by c1 c2 c3;
+  overt by o1 o2 o3;
+
+OUTPUT:     SAMPSTAT STAND TECH1; 
+```
+
+::: {.callout-caution collapse="true"}
+### Answer
+Comparing the standardized estimates of the categorical and non-categorical results, we see (in this example) fairly similar results when we treat the variables as categorical rather than continuous. You can see that the loadings and factor correlations (the estimates) appear to be larger. We also see that the O2 variable loads relatively strong on the OVERT variable now compared to the model with continuous indicators.   
+
+**Remember: the decision to choose for categorical or non-categorical should be theory driven.**  
+
+

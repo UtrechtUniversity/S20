@@ -1,0 +1,371 @@
+---
+title: "Exercises"
+subtitle: "Day 1: Getting started with Mplus"
+editor: source
+---
+
+## Getting data into Mplus
+The data for this exercise are taken from @van_de_schoot_can_2010. The study examined the understanding of anti-social behaviour and its association with popularity and sociometric status in a sample of at-risk adolescents from diverse ethnic backgrounds ($n = 1491$, average age 14.7 years). Both overt and covert types of anti-social behaviour were used to distinguish subgroups. For the current exercise you will carry out a regression analysis where you want to predict levels of socially desirable answering patterns of adolescents (`sw`) using the predictors overt (`overt`) and covert antisocial behaviour (`covert`).     
+
+Before you will carry out this regression analysis in Mplus, you will first conduct the analysis in a program of your own choice. By first conducting the analysis in another program than Mplus, you can later check whether the results of Mplus are comparable. If they are similar, you know you specified everything correctly in Mplus.     
+
+Open the SPSS file `popular_regr_1.sav` (or `popular_regr_1.xlsx` or `popular_regr_1.txt` if you are working with different software). Note that any other software can be used. Also, note that the aim of the exercise is not to learn how to work with SPSS.     
+
+### Exercise 1A
+Ask for descriptive statistics and run a correlation analysis in SPSS (or any other program of your own choice) between the variables of interest. What do you think of the correlations (significance, direction, magnitude)? You can use the following SPSS syntax:     
+
+```default
+DESCRIPTIVES VARIABLES=sw covert overt
+ /STATISTICS=MEAN STDDEV MIN MAX.
+CORRELATIONS
+ /VARIABLES=sw covert overt
+ /PRINT=TWOTAIL NOSIG
+ /MISSING=PAIRWISE.
+```
+
+::: {.callout-caution collapse="true"}
+### Answer
+The descriptive statistics and correlations are shown below: 
+
+![](figures/spss1a.pdf){width="700px"}
+:::
+
+### Exercise 1B
+Run a regression analysis. The dependent variable is sw and the independent variables are covert and overt. You can use the following SPSS syntax:     
+
+```default
+REGRESSION
+ /MISSING LISTWISE
+ /STATISTICS COEFF OUTS R
+ /CRITERIA=PIN(.05) POUT(.10)
+ /NOORIGIN
+ /DEPENDENT sw
+ /METHOD=ENTER covert overt
+ /SCATTERPLOT=(sw , covert) (sw , overt).
+```
+
+::: {.callout-caution collapse="true"}
+### Answer
+The descriptive results of the regression analysis are shown below:    
+
+![](figures/spss1b.pdf){width="700px"}
+:::
+
+### Exercise 1C
+Now, prepare the data for Mplus analyses:     
+
+- In SPSS, recode all user and system missings values into `-999`. To do this, go to: Transform $\rightarrow$ Recode into same variables $\rightarrow$ select all variable and put these in the Variable box $\rightarrow$ Old and New values $\rightarrow$ select ‘System or User missing’ and enter the value `-999` $\rightarrow$ Add $\rightarrow$ Continue $\rightarrow$ OK. Alternatively, you could use the following syntax:   
+
+```default
+RECODE
+respnr Dutch gender sw covert overt
+(missing=-999) (else=copy).
+EXECUTE.
+```    
+
+- Save your data as a tab-delimited file (e.g., `data_regr.dat`) without variable names. There are 2 ways to save your data: through the menu ‘save as’ (see lecture slides - do not forget to turn off the selection ‘write variable names to spreadsheet’), or through SPSS syntax. An example of syntax is given below:     
+
+```default
+SAVE TRANSLATE OUTFILE='C:\directory\your.filename.dat'
+/TYPE=TAB
+/textoptions decimal=dot
+/MAP
+/REPLACE
+/CELLS=VALUES.
+```      
+
+- Open Mplus, write the syntax file, and ask only for the sample statistics (you can copy all variable names from the SPSS file, that will save you some time with larger data sets [go to ‘variable view’, select all variable names and use Crtl + c in SPSS and Crtl + v in Mplus]). The Mplus syntax file should look like this:     
+
+```default
+DATA:         
+  FILE = yourfilename.dat;
+  
+VARIABLE:
+  NAMES = respnr Dutch gender sw covert overt;
+  USEVARIABLES = covert sw overt;
+
+OUTPUT: 
+  SAMPSTAT;
+```
+
+- Save your input file in the same folder that contains your data file. Go through the entire output file and find the sample statistics (sample size, means and correlations). Are there differences with the results of the SPSS analyses?  
+
+::: {.callout-caution collapse="true"}
+### Answer
+Requesting the sample statistics without specifying any model does not only give information about the data, sample size, covariance & correlation matrix etc. It also returns model results, which might be unexpected. This "model" is simply the independence model where all variables are completely uncorrelated with all other variables – of course a very unrealistic, ill-fitting model.    
+
+The important results are displayed below:    
+![](figures/mplus1c.pdf){width="700px"}
+
+Clearly there are big differences when compared with the results obtained in SPSS. The reason is that we "forgot" to tell Mplus `-999` is used to denote missing data. Mplus treats the value `-999` as an observed value. 
+:::
+
+### Exercise 1D
+In the previous run we forgot to include the missing data statement. So, add this statement to your syntax:
+
+```default
+DATA: 
+  FILE = yourfilename.dat;
+  
+VARIABLE:
+  NAMES = respnr Dutch gender sw covert overt;
+  USEVARIABLES = covert sw overt;
+  MISSING = ALL (-999);
+  
+OUTPUT: sampstat;
+```
+
+Compare the result again. Are there any differences in terms of sample statistics?   
+
+::: {.callout-caution collapse="true"}
+### Answer
+The important output is shown below:    
+
+![](figures/mplus1d_1.pdf){width="700px"}
+The sample means and correlations that Mplus returns are the same as those calculated in SPSS. There is a difference in reported sample size. In SPSS this is 1343 (see the correlation table) and in Mplus this is 1346. This is caused by missing data. If you inspect the following Mplus output, it becomes clear this is caused by missing data for the variables `covert` and `overt`:
+
+![](figures/mplus1d_2.pdf){width="700px"}
+:::
+
+### Exercise 1E
+Now, add the model statements. (IVs = `overt` and `covert`, DV = `sw`) and also ask for standardized results. The syntax file should look like this:      
+
+```default
+DATA: 
+  FILE = your.filename.dat;
+  
+VARIABLE:
+  NAMES = respnr Dutch gender sw covert overt;
+  USEVARIABLES = covert sw overt;
+  MISSING = ALL (-999);
+  
+MODEL: 
+  sw ON covert overt;
+  
+OUTPUT: 
+  sampstat; STAND (stdyx);
+```
+
+::: {.callout-note}
+In the model statement you specify `sw` (dependent variable) `ON covert overt` (independent variables). This might be counter intuitive, since we are used to specifing the independent variables before the dependent ones.   
+:::
+
+Interpret the warning messages.     
+
+::: {.callout-caution collapse="true"}
+### Answer
+Mplus gives the following warnings:     
+
+```default
+*** WARNING 
+ Data set contains cases with missing on all variables.
+ These cases were not included in the analysis.
+ Number of cases with missing on all variables: 145
+ 
+*** WARNING 
+ Data set contains cases with missing on x-variables.
+ These cases were not included in the analysis.
+ Number of cases with missing on x-variables: 3
+ 2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+ 
+Number of observations                                1343
+```
+
+As becomes clear when inspecting the total sample size used for the analyses ($n=1343$) Mplus used listwise deletion and deleted 145 cases because of missingness on the DV and three cases because of missingness on the IVs. 
+:::
+
+### Exercise 1F
+Now, activate FIML. The following Mplus syntax can be used:   
+
+```default
+DATA: 
+  FILE = your.filename.dat;
+  
+VARIABLE:
+  NAMES = respnr Dutch gender sw covert overt;
+  USEVARIABLES = covert sw overt;
+  MISSING = ALL (-999);
+  
+MODEL:  sw ON covert overt;
+        covert overt;
+        
+OUTPUT: 
+  SAMPSTAT; STAND (stdyx);
+```
+
+Interpret the output and compare the results with the results obtained in SPSS.     
+
+::: {.callout-note"}
+Note that the regression results for Exercise 1F are slightly different when compared with SPSS, but the results obtained in Exercise 1E are not. Why is this the case?
+:::
+
+::: {.callout-caution collapse="true"}
+### Answer
+Note the sample size used for the regression analysis:   
+
+```default
+Number of observations                                1346
+```
+
+The three missing cases have now been used in the analyses. This difference in sample size is causing minor difference in the output when comparing the results from SPSS (see above) and the results obtained in Mplus (see the output file `multiple_regression with fiml.out`). 
+:::
+
+## Regression in Mplus
+In this exercise we make use of a part (the Child Development Supplement) of the Panel Study of Income Dynamics (PSID). We would like to predict whether three dependent variables, Applied problems (`APst02`), Behavioral problems (`problems`), and Self esteem (`selfesteem`), can be predicted from two independent variables: letters words (`LWst02`), and digit span (`DS02`). Use the data file `CDSsummerschool.sav`.
+
+### Exercise 2A
+It is a good exercise to draw the model we plan to estimate for yourself. Be very precise in how you draw the correlations.   
+
+::: {.callout-caution collapse="true"}
+### Answer
+![](figures/model2a.pdf){width="500px"}
+:::
+
+### Exercise 2B
+Request for descriptive statistics and correlations in SPSS. Then, prepare the SPSS data file for Mplus (do not forget to recode the missing values and save the data as a `.dat` file). Create the Mplus syntax file to analyze the research question.    
+Check if the descriptive statistics obtained in SPSS and Mplus are comparable. Think about the warnings about sample size. Do these make sense? Did you activate FIML?    
+
+Interpret the output of Mplus. What are your conclusions? (Notice that you may get the warning that `Selfesteem` contains more than 8 characters. You can ignore this warning).   
+
+::: {.callout-note}
+If you get an error message, check whether you specified which variables to use in this analysis. `Genchild` should not be used (If you do specify `Genchild` in the use variables statement, Mplus will automatically include it in parts of the model. Subsequently, it will complain that it is dichotomous but used as if continuous). Also, check whether you specified the missing values in the SPSS file before running your analysis (all missing values should be indicated by `-999`).  
+:::
+
+::: {.callout-caution collapse="true"}
+### Answer
+For the model statement in the input file you can use either:     
+
+```default
+MODEL:
+  APst02 ON DS02 LWst02;
+  Problems ON DS02 LWst02;
+  Selfesteem ON DS02 LWst02;
+```
+Or, alternatively, you can use:    
+
+```default
+MODEL:
+  APst02 Problems Selfesteem ON DS02 LWst02;
+```
+
+The result is exactly the same. The model results can be found in `ex2 CDS summerschool.out`. 
+
+Note that the zero chi-square implies that the model is fully saturated, meaning that the theoretical covariance
+matrix is a function of as many parameters as there are variances and covariances (on one side of the main
+diagonal) in the covariance matrix. You have essentially re-interpreted the covariance matrix, and this may be
+quite meaningful. Then, what you have is essentially a regression model, and just must evaluate your model in
+those terms. Are the estimated relationships strong? Are the direction of the parameter estimates consistent with theory? Are any assumptions violated (note that this would be checked before analysis)? Any basic regression text can guide you.     
+:::
+
+## TECH1 output
+This exercise illustrates that communicating with Mplus sometimes can be difficult, because the TECH1 output can in some instances be misleading. This may confuse beginners (it confused us) but on the other hand, it is a useful reminder always to double check the User Guide and the other parts of the output as well.    
+     
+The data for this exercise is about corporal punishment, which can be defined as the deliberate infliction of pain as retribution for an offence, or for the purpose of disciplining or reforming a wrongdoer or to change an undesirable attitude or behavior. Here we are interested in how corporal punishment influences children’s psychological maladjustment. Data come from 175 children between the ages of 8 and 18. The Physical Punishment Questionnaire (PPQ) was used to measure the level of physical punishment that was experienced.     
+     
+In this exercise we focus on predicting psychological maladjustment (higher score implies more problems) by perceived rejection (e.g., my mother does not really love me; my mother ignores me as long as I do nothing to bother her; my mother goes out of her way to hurt my feelings). Moreover, rejection is predicted by perceived harshness (0 = never punished physically in any way; 16 = punished more than 12 times a week, very hard) and perceived justness (2 = very unfair and almost never deserved; 8 = very fair and almost always deserved).    
+     
+The data consists of a covariance matrix taken from a published paper and can be found in the file `CorPun.dat`. So, besides analyzing a data set you collected yourself, in Mplus it is possible to base your analyses on a covariance or correlation table (and this is the reason why reviewers always ask you to include it).      
+
+### Exercise 3A
+Make a drawing of the statistical model about corporal punishment and write down which parameters (e.g. regression paths, covariances, residuals) you expect that are estimated. Number these parameters.   
+
+::: {.callout-caution collapse="true"}
+### Answer
+![](figures/modelex3.pdf){width="500px"}
+
+The parameters you expect to be estimated are the following:   
+
+- 2 variances (harsh, just)
+- 1 covariance (harsh with just)
+- 3 regression paths
+- 2 residual variances (reject and maladj)
+- 2 means (just and harsh, if means are available in the data)
+- 2 intercepts (reject and maladj, if means are available in the data)
+
+This means we estimate 8 parameters in total excluding the means, or 12 including the means. 
+:::
+
+### Exercise 3B
+Write your Mplus input file for this model. Note that since you are using a covariance matrix as the input file, you should indicate this also in the input file, as well as the number of observations (See User’s Guide Examples 13.1 and 13.2). This can be done through:    
+
+```default
+DATA:     FILE = CorPun.dat;       ! name of the file
+          TYPE = COVA;             ! indicate it is a covariance matrix
+          NOBSERVATIONS = 175;    ! indicate the number of cases
+          
+VARIABLE: NAMES = harsh just reject maladj;
+```
+
+Now specify the model part yourself based on the drawing you made for exercise 3A.    
+
+::: {.callout-caution collapse="true"}
+### Answer
+The model command should look as follows:    
+
+```default
+MODEL:    maladj ON reject;
+          reject ON harsh just;
+```
+
+The entire Mplus input file can be found on SURFdrive. 
+:::
+
+### Exercise 3C
+Now, also ask for TECH1 output in your Mplus input file. This can be done by adding `TECH1` to the `OUTPUT` command.    
+
+Under the subheading `TECHNICAL 1 OUTPUT` you can find six matrices (`NU`, `LAMBDA`, `THETA`, `ALPHA`, `BETA` and `PSI`) with numbers counting up to the total number of parameters that Mplus has estimated. This way you can check whether Mplus analyzed the model you wanted (and you will discover this is not always the case).     
+
+The regression coefficient between rejection and harshness belongs in the Beta matrix. Write down in which matrix all the other parameters listed in Exercise 3A should be.   
+
+::: {.callout-caution collapse="true"}
+### Answer
+The regression coefficients belong in the Beta matrix, the variances and residual variances belong in the Psi matrix. The means and intercepts are not estimated because they are not available in the data. 
+:::
+
+### Exercise 3D
+Run your model and inspect the TECH1 output to see whether all parameters are estimated. Did Mplus estimate all the parameters that you expected? Notice that you can also answer this question by means of the Mplus diagrammer (see today's lecture slides). The diagram will show you all regression paths, (residual) variances, and covariances. Note that it never provides you with information about the means (`NU` & `ALPHA` matrices in TECH1). Go to diagram in the menu and click: view diagram.
+
+Write down the chi-square statistic and its degrees of freedom from the `MODEL FIT INFORMATION`. Also inspect the model results.     
+
+::: {.callout-caution collapse="true"}
+### Answer
+In the model results, you can see that the estimates for the variances and covariance are not given. TECH1 also gives the impression that the variances and covariance of harsh and just were not estimated. However, the Mplus User Guide says that by default all 3 are included! When there is no syntax line specifying the variances of harsh and just, and no line specifying their covariance, the Tech1 output indicates that these 3 parameters are not estimated. You can see that these parameters are not included by examining the Psi matrix of the TECH1 output. Inspection of the starting values learns that these 3 parameters are assigned starting values. So what happens when you don’t ask for the (co)variances, is that Mplus includes them anyway, by default, but does not report those parameters and does not treat them as ‘real’ estimated parameters. You can also see this when you include the variances and covariance of harsh and just explicitly, as we will do in Exercise 3E.    
+:::
+
+### Exercise 3E
+Specify the following line of code in your model statement:    
+
+```default
+MODEL:
+[...]
+harsh with just;
+harsh just;
+```
+
+Does anything change in the model results when you include this statement? Does anything change in the TECH1 output when you include this statement? (why do you think this is the case?). Did anything change to your chi-square statistic and its degrees of freedom? 
+
+::: {.callout-caution collapse="true"}
+### Answer
+When you include the statements harsh; just; you will see in the model results that the variances and the covariance of harsh and just is included, and that these are also specified in the TECH1 output. When a line of code is included to estimate the covariance, the variances are also automatically included in the TECH1 table of estimated parameters. But for clarity’s sake, it may be best to include both the variances and the covariance explicitly. The more explicit your code is, the more certain you can be that Mplus is doing what you want.       
+
+The first model specified in b) is the shortest, and Mplus defaults are included, but may not be evident in the output. Looking at the Tech1 output, you will not see the variances of harsh and just, nor their covariance. Neither are these specified in the results of the analysis. When you include the statements `harsh; just;` you will see in the model results that the variances and the covariance of harsh and just is included, and that these are also specified in the Tech1 output.
+
+Including the final statement `harsh with just;` does not change the tech1 output, or the model results, but it is the most specific way of specifying what happens in Mplus. The more specific you are in your input file, the more control you as a user have in telling Mplus what to do. 
+
+By adding the statement harsh with just; you know exactly what Mplus should do, and you can tell Mplus not to
+include this relationship by specifying `harsh with just@0`; 
+:::
+
+### Exercise 3F
+
+So how do we omit, for example, the covariance, by overriding the Mplus default? Stated otherwise, how do we make sure that the covariance of harsh and just is really NOT estimated (i.e., that it is set at 0)? To do this, we can use the following syntax: 
+
+```default
+harsh WITH just@0; !where @0 implies the covariance is forced to be zero.
+```
+Inspect the number of degrees of freedom, model results and TECH1, what do you conclude?  
+
+::: {.callout-caution collapse="true"}
+### Answer
+This example shows that the TECH1 output can be very useful to see what Mplus is doing, but it can also be misleading. Always cross check that Mplus has understood what you wanted it to do by looking at the model degrees of freedom, the TECH1 output / diagram and model results. When these pieces of information do not contradict each other and Mplus gives you exactly the output you expect, then you can move forward with interpreting the model effect. Also check the Mplus User Guide to be sure, and/or state everything that you want - and do NOT want –in your model very explicitly in your syntax. This way you have more certainty that Mplus is including and omitting exactly what you want, and not what it does in the background ‘by default’!
+:::

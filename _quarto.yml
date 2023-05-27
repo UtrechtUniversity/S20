@@ -12,7 +12,13 @@ website:
       - href: index.qmd
         text: Home
       - section: "Day 1"
+        contents:
+          - day1_introduction.qmd
+          - day1_exercises.qmd
       - section: "Day 2"
+        contents:
+          - day2_introduction.qmd
+          - day2_exercises.qmd
       - section: "Day 3"
         contents:
           - day3_part1.qmd
