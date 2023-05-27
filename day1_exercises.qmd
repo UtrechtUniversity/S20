@@ -2,6 +2,7 @@
 title: "Exercises"
 subtitle: "Day 1: Getting started with Mplus"
 editor: source
+bibliography: references.bib
 ---
 
 ## Getting data into Mplus

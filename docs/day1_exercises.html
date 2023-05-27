@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -297,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="getting-data-into-mplus" class="level2">
 <h2 class="anchored" data-anchor-id="getting-data-into-mplus">Getting data into Mplus</h2>
-<p>The data for this exercise are taken from <span class="citation" data-cites="van_de_schoot_can_2010">@van_de_schoot_can_2010</span>. The study examined the understanding of anti-social behaviour and its association with popularity and sociometric status in a sample of at-risk adolescents from diverse ethnic backgrounds (<span class="math inline">\(n = 1491\)</span>, average age 14.7 years). Both overt and covert types of anti-social behaviour were used to distinguish subgroups. For the current exercise you will carry out a regression analysis where you want to predict levels of socially desirable answering patterns of adolescents (<code>sw</code>) using the predictors overt (<code>overt</code>) and covert antisocial behaviour (<code>covert</code>).</p>
+<p>The data for this exercise are taken from <span class="citation" data-cites="van_de_schoot_can_2010">Van De Schoot et al. (<a href="#ref-van_de_schoot_can_2010" role="doc-biblioref">2010</a>)</span>. The study examined the understanding of anti-social behaviour and its association with popularity and sociometric status in a sample of at-risk adolescents from diverse ethnic backgrounds (<span class="math inline">\(n = 1491\)</span>, average age 14.7 years). Both overt and covert types of anti-social behaviour were used to distinguish subgroups. For the current exercise you will carry out a regression analysis where you want to predict levels of socially desirable answering patterns of adolescents (<code>sw</code>) using the predictors overt (<code>overt</code>) and covert antisocial behaviour (<code>covert</code>).</p>
 <p>Before you will carry out this regression analysis in Mplus, you will first conduct the analysis in a program of your own choice. By first conducting the analysis in another program than Mplus, you can later check whether the results of Mplus are comparable. If they are similar, you know you specified everything correctly in Mplus.</p>
 <p>Open the SPSS file <code>popular_regr_1.sav</code> (or <code>popular_regr_1.xlsx</code> or <code>popular_regr_1.txt</code> if you are working with different software). Note that any other software can be used. Also, note that the aim of the exercise is not to learn how to work with SPSS.</p>
 <section id="exercise-1a" class="level3">
@@ -769,10 +788,15 @@ Answer
 </div>
 
 
+
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-van_de_schoot_can_2010" class="csl-entry" role="listitem">
+Van De Schoot, Rens, Floor Van Der Velden, Jan Boom, and Daniël Brugman. 2010. <span>“Can at‐risk Young Adolescents Be Popular and Anti‐social? <span>Sociometric</span> Status Groups, Anti‐social Behaviour, Gender and Ethnic Background.”</span> <em>Journal of Adolescence</em> 33 (5): 583–92. <a href="https://doi.org/10.1016/j.adolescence.2009.12.004">https://doi.org/10.1016/j.adolescence.2009.12.004</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
