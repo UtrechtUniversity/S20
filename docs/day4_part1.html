@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Utrecht Summer School (S20) - Introduction</title>
+<title>Utrecht Summer School (S20) - Part 1: Investigating the mean structure, and CLPM</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -93,6 +112,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -106,7 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./day4_introduction.html">Day 4</a></li><li class="breadcrumb-item"><a href="./day4_introduction.html">Introduction</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./day4_part1.html">Day 4</a></li><li class="breadcrumb-item"><a href="./day4_part1.html">Part 1: Investigating the mean structure, and CLPM</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -224,14 +245,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./day4_introduction.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Introduction</span></a>
+  <a href="./day4_part1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Part 1: Investigating the mean structure, and CLPM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./day4_exercises.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exercises</span></a>
+  <a href="./day4_part2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 2: The RI-CLPM</span></a>
   </div>
 </li>
       </ul>
@@ -242,14 +263,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mean-structure" id="toc-mean-structure" class="nav-link active" data-scroll-target="#mean-structure">Mean structure</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1a" id="toc-exercise-1a" class="nav-link" data-scroll-target="#exercise-1a">Exercise 1A</a></li>
+  <li><a href="#exercise-1b" id="toc-exercise-1b" class="nav-link" data-scroll-target="#exercise-1b">Exercise 1B</a></li>
+  <li><a href="#exercise-1c" id="toc-exercise-1c" class="nav-link" data-scroll-target="#exercise-1c">Exercise 1C</a></li>
+  </ul></li>
+  <li><a href="#the-clpm" id="toc-the-clpm" class="nav-link" data-scroll-target="#the-clpm">The CLPM</a>
+  <ul class="collapse">
+  <li><a href="#exercise-2a" id="toc-exercise-2a" class="nav-link" data-scroll-target="#exercise-2a">Exercise 2A</a></li>
+  <li><a href="#exercise-2b" id="toc-exercise-2b" class="nav-link" data-scroll-target="#exercise-2b">Exercise 2B</a></li>
+  <li><a href="#exercise-2c" id="toc-exercise-2c" class="nav-link" data-scroll-target="#exercise-2c">Exercise 2C</a></li>
+  <li><a href="#exercise-2d" id="toc-exercise-2d" class="nav-link" data-scroll-target="#exercise-2d">Exercise 2D</a></li>
+  <li><a href="#exercise-2e" id="toc-exercise-2e" class="nav-link" data-scroll-target="#exercise-2e">Exercise 2E</a></li>
+  <li><a href="#exercise-2f" id="toc-exercise-2f" class="nav-link" data-scroll-target="#exercise-2f">Exercise 2F</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction</h1>
+<h1 class="title">Part 1: Investigating the mean structure, and CLPM</h1>
 <p class="subtitle lead">Day 4: Trait, time lags, and measurement error</p>
 </div>
 
@@ -265,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>In this computer lab are going to analyze the same data that were used in the Hamaker et al.&nbsp;(2015) paper and were presented in the lecture. The goals of these exercises are to get some experience with fitting (random intercept) cross-lagged panel models, interpreting their results, and comparing them. Here, we focus on the relationship between <em>Parental Responsiveness</em> and <em>Adolescents’ Depressive Symptomatology</em> (note, in the lecture the focus was on a different concept, namely <em>Parental Psychological Control</em>).</p>
+<p>In this first part of the computer lab you are going to analyze the same data that were used in the <span class="citation" data-cites="hamaker_critique_2015">Hamaker, Kuiper, and Grasman (<a href="#ref-hamaker_critique_2015" role="doc-biblioref">2015</a>)</span> paper and were presented in the lecture. The goals of these exercises are to get some experience with fitting (random intercept) cross-lagged panel models, interpreting their results, and comparing them. Here, we focus on the relationship between <em>Parental Responsiveness</em> and <em>Adolescents’ Depressive Symptomatology</em> (note, in the lecture the focus was on a different concept, namely <em>Parental Psychological Control</em>).</p>
 <p>The data (means, standard deviations, and the correlation matrix) are included in the file <code>Soenens.dat</code> on SURFdrive. The number of observations is 396. The data command for these data should be:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DATA:       </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  TYPE = MEANS STDEVIATIONS CORRELATION;   </span>
@@ -275,11 +316,192 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>VARIABLE:   </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  NAMES = PsCon1-PsCon3 Res1-Res3 BeCon1-BeCon3 Dep1-Dep3;</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  USEVARIABLES = Res1 Dep1 Res2 Dep2 Res3 Dep3;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Do the exercises. You can navigate through them using the left-hand menu or the arrows on left- and right-hand side of this screen. Answers are included below each exercise. The Mplus input files can found in the SURFdrive folder.</p>
+<section id="mean-structure" class="level2">
+<h2 class="anchored" data-anchor-id="mean-structure">Mean structure</h2>
+<p>Specify a model in which you investigate whether the group <em>means</em> can be constrained across time. Tip: Allow all variables to covary with each other (i.e.&nbsp;specify a model without constraints on the covariance structure) such that we are estimating means, and not intercepts.</p>
+<section id="exercise-1a" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1a">Exercise 1A</h3>
+<p>Does this model fit?</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The model specification is given in <code>exercise1A.inp</code> on SURFdrive. The model does not fit well, according to the <span class="math inline">\(\chi^{2}\)</span> and the RMSEA; CFI and TLI indicate a good and barely acceptable model fit, respectively. See the slides of day 1 of this summer school if you need a refresher on the recommended cutoff values for these fit indices (although such cutoff recommendations remain a hotly debated topic among statisticians).</p>
+<ul>
+<li><span class="math inline">\(\chi^{2}\)</span> (4) = 19.620, <span class="math inline">\(p &lt; .001\)</span></li>
+<li>RMSEA = 0.099</li>
+<li>CFI = 0.986</li>
+<li>TLI = 0.946</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-1b" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1b">Exercise 1B</h3>
+<p>What can you do to improve the model fit?</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We can look at the modification indices in the output. Here, we specified <code>MOD(4)</code> in the <code>OUTPUT</code> command, which indicates all parameters that can be added/freed that will lead to a decrease in chi-square of at least 4 points (which is a significant improvement combined with 1 <em>df</em>).</p>
+<p>Based on the Mplus output, it appears that freeing the mean of <code>Dep1</code> leads to the largest change in chi-square (M.I. = 10.53).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-1c" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1c">Exercise 1C</h3>
+<p>Run the adjusted model and discuss the results.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Syntax for the adjusted model is in <code>exercise1C.inp</code>. Looking at the fit indices of the adjusted model, the chi-square for this model is still significant, but all other measures indicate the model fit is okay to excellent. Moreover, the model is a significant improvement in comparison to the previous model: <span class="math inline">\(\Delta\chi^{2} = 19.62 - 8.71 = 10.91\)</span>, with <span class="math inline">\(\Delta\)</span><em>df</em> = 1 and, <span class="math inline">\(p = .001\)</span>.</p>
+<p>You can calculate the <em>p</em>-value of the <span class="math inline">\(\Delta \chi^{2}\)</span> using the <code>pchisq()</code>-function in R (with the <code>lower.tail</code> argument set to <code>FALSE</code>), or <a href="http://www.fourmilab.ch/rpkp/experiments/analysis/chiCalc.html">an online tool</a></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="the-clpm" class="level2">
+<h2 class="anchored" data-anchor-id="the-clpm">The CLPM</h2>
+<section id="exercise-2a" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2a">Exercise 2A</h3>
+<p>Specify the cross-lagged panel model (CLPM) in Mplus. Regress the observed variables directly on each other over time, as in the graph above. Try to think of where each parameter you estimate should go in the graph. Compare your model specification with the input file <code>exercise2A.inp</code> in SURFdrive.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/CLPM2.png" class="img-fluid figure-img" width="400"></p>
+<figcaption class="figure-caption">The cross-lagged panel model.</figcaption>
+</figure>
+</div>
+</section>
+<section id="exercise-2b" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2b">Exercise 2B</h3>
+<p>Specify the model as in the graph below (the CLPM with centered latent variables), and again include the (significant) parameter estimates in this graph. Tip: Do not forget to constrain the measurement error variances of the observed variables to 0. Compare your model specification with the input file <code>exercise2B.inp</code> in SURFdrive.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/CLPM-centered.png" class="img-fluid figure-img" width="400"></p>
+<figcaption class="figure-caption">The cross-lagged panel model with centered latent variables.</figcaption>
+</figure>
+</div>
+</section>
+<section id="exercise-2c" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2c">Exercise 2C</h3>
+<p>The two models should lead to the exact same model fit. Estimate the model and discuss the model fit. When comparing the parameter estimates, what is the difference between the model in exercise 2A and the model in exercise 2B?</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The CLPM with centered latent variables is, just like the CLPM from exercise 2A, a traditional CLPM, but specified in such a way that the mean structure is first separated from the regression part of the model. This implies we model the means, rather than intercepts, which makes it easier to impose the constraint of identical means over time. So, the fit indices and most parameter estimates are equivalent, except for… (see next question)</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2d" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2d">Exercise 2D</h3>
+<p>Which parameter estimates differ? How can they be related?</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The difference in parameter estimates is in the means/intercepts. For the first model we estimate the means at wave 1, and intercepts thereafter. For the second model we obtain mean estimates at each wave (although they are referred to as intercepts in the Mplus output).</p>
+<p>Again, the reason for this is that in the first model, the means at wave 2 and 3 are partly predicted by the means from previous waves (through the lagged relationships). Therefore, the constants that are estimated should be interpreted as intercepts. In the second model, the mean part (triangles) and the regression part (lagged parameters) are separated.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2e" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2e">Exercise 2E</h3>
+<p>Constrain the means in the second version of the CLPM. Please do not constrain the mean of <code>Dep1</code>, however, as this constraint proved untenable in exercise 1C. Discuss the model fit.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The input for these models are in <code>exercise2E.inp</code>. The chi-square has increased in comparison with the previous model: The reason is that this is a restricted model (a special case of the previous model). We can test whether the increase in misfit is significant using the chi-square difference test: <span class="math inline">\(\Delta\chi^{2} = 69.59 - 62.98 = 6.61\)</span> with <span class="math inline">\(\Delta\)</span><em>df</em> = 7 – 4 = 3, <span class="math inline">\(p = .0854\)</span>. Hence, the constraints are tenable. We can also look at information criteria such as the AIC or BIC. The model with the lowest AIC or BIC is preferred.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2f" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2f">Exercise 2F</h3>
+<p>Continue with the model from the previous question and constrain all the lagged parameters between wave 1 and 2 to be identical to the lagged parameters between wave 2 and 3. Discuss the model fit, and compare this model to the previous one to see whether the constraint holds.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The input for these models are in <code>CLPMalt3.inp</code>. The chi-square has again increased in comparison with the previous model: The reason is that this is a restricted model (a special case of the previous model). We can test whether the increase in misfit is significant: <span class="math inline">\(\Delta\chi^{2} 81.52 - 69.59 = 11.93\)</span>, <span class="math inline">\(\Delta\)</span>(df) = 11 - 7 = 4, <span class="math inline">\(p = .0178\)</span>.</p>
+<p>If we stick to an alpha of .05, the constraints must be rejected (as the increase in misfit is significant). Note that we are doing several model comparisons here, so one could also argue that we should use a smaller alpha to guard against an inflated overall type I error. Again, an alternative would be to use information criteria for model comparisons.</p>
+</div>
+</div>
+</div>
 
 
 
-</main> <!-- /main -->
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-hamaker_critique_2015" class="csl-entry" role="listitem">
+Hamaker, Ellen L., Rebecca M. Kuiper, and Raoul P. P. P. Grasman. 2015. <span>“A Critique of the Cross-Lagged Panel Model.”</span> <em>Psychological Methods</em> 20 (1): 102–16. <a href="https://doi.org/10.1037/a0038889">https://doi.org/10.1037/a0038889</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
