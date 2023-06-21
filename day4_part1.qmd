@@ -110,7 +110,7 @@ Continue with the model from the previous question and constrain all the lagged 
 
 ::: {.callout-caution collapse="true"}
 ### Answer
-The input for these models are in `CLPMalt3.inp`. The chi-square has again increased in comparison with the previous model: The reason is that this is a restricted model (a special case of the previous model). We can test whether the increase in misfit is significant: $\Delta\chi^{2} 81.52 - 69.59 = 11.93$, $\Delta$(df) = 11 - 7 = 4, $p = .0178$. 
+The input for these models are in `exercise2F.inp`. The chi-square has again increased in comparison with the previous model: The reason is that this is a restricted model (a special case of the previous model). We can test whether the increase in misfit is significant: $\Delta\chi^{2} 81.52 - 69.59 = 11.93$, $\Delta$(df) = 11 - 7 = 4, $p = .0178$. 
 
 If we stick to an alpha of .05, the constraints must be rejected (as the increase in misfit is significant). Note that we are doing several model comparisons here, so one could also argue that we should use a smaller alpha to guard against an inflated overall type I error. Again, an alternative would be to use information criteria for model comparisons.
 :::

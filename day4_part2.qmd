@@ -18,7 +18,7 @@ The input for these models are in `exercise3A.inp`. This model fits very well; h
 :::
 
 ### Exercise 3B
-Specify the RI-CLPM with the constraints on the grand means at each occasions. Again, please do not constrain the mean of `Dep1`, however, as this constraint proved untenable in exercise 3.
+Specify the RI-CLPM with the constraints on the grand means at each occasions. Again, please do not constrain the mean of `Dep1`, however, as this constraint proved untenable in exercise 1C.
 
 ::: {.callout-caution collapse="true"}
 ### Answer
