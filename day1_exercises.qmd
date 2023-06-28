@@ -6,7 +6,7 @@ bibliography: references.bib
 ---
 
 ## Getting data into Mplus
-The data for this exercise are taken from @van_de_schoot_can_2010. The study examined the understanding of anti-social behaviour and its association with popularity and sociometric status in a sample of at-risk adolescents from diverse ethnic backgrounds ($n = 1491$, average age 14.7 years). Both overt and covert types of anti-social behaviour were used to distinguish subgroups. For the current exercise you will carry out a regression analysis where you want to predict levels of socially desirable answering patterns of adolescents (`sw`) using the predictors overt (`overt`) and covert antisocial behaviour (`covert`).     
+The data for this exercise are taken from @van_de_schoot_can_2010. The study examined the understanding of antisocial behaviour and its association with popularity and sociometric status in a sample of at-risk adolescents from diverse ethnic backgrounds ($n = 1491$, average age 14.7 years). Both overt and covert types of antisocial behaviour were used to distinguish subgroups. For the current exercise you will carry out a regression analysis where you want to predict levels of socially desirable answering patterns of adolescents (`sw`) using the predictors overt (`overt`) and covert antisocial behaviour (`covert`).     
 
 Before you will carry out this regression analysis in Mplus, you will first conduct the analysis in a program of your own choice. By first conducting the analysis in another program than Mplus, you can later check whether the results of Mplus are comparable. If they are similar, you know you specified everything correctly in Mplus.     
 
@@ -148,7 +148,7 @@ OUTPUT:
 ```
 
 ::: {.callout-note}
-In the model statement you specify `sw` (dependent variable) `ON covert overt` (independent variables). This might be counter intuitive, since we are used to specifing the independent variables before the dependent ones.   
+In the model statement you specify `sw` (dependent variable) `ON covert overt` (independent variables). This might be counterintuitive, since we are used to specifying the independent variables before the dependent ones.   
 :::
 
 Interpret the warning messages.     

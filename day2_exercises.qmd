@@ -413,5 +413,5 @@ OUTPUT:     SAMPSTAT STAND TECH1;
 Comparing the standardized estimates of the categorical and non-categorical results, we see (in this example) fairly similar results when we treat the variables as categorical rather than continuous. You can see that the loadings and factor correlations (the estimates) appear to be larger. We also see that the O2 variable loads relatively strong on the OVERT variable now compared to the model with continuous indicators.   
 
 **Remember: the decision to choose for categorical or non-categorical should be theory driven.**  
-
+:::
 
