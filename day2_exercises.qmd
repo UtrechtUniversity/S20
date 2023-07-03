@@ -56,7 +56,7 @@ On slide 16, a CFA with categorical variables is specified. Try to replicate thi
 
 ::: {.callout-caution collapse="true"}
 ### Answer
-EMPTY
+The correct input is displayed on slide 16. The output can be found on slide 18. Note how the output now includes estimates of "thresholds". 
 :::
 
 ### Exercise 1E
