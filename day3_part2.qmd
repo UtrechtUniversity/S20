@@ -26,7 +26,7 @@ Specify this model and discuss the model fit.
 
 ::: {.callout-caution collapse="true"}
 ### Answer
-See the `Ex2Model1.out` file. The $\chi^{2}$ test indicate that the model does not fit, $\chi^{2} (16) = 33.06$, $p = .0073$. Other measures indicate acceptable model fit: RMSEA is 0.06, CFI is 0.96, TLI is 0.93, and SRMR is 0.04.
+See the input file for Model 1. The $\chi^{2}$ test indicate that the model does not fit, $\chi^{2} (16) = 33.06$, $p = .0073$. Other measures indicate acceptable model fit: RMSEA is 0.06, CFI is 0.96, TLI is 0.93, and SRMR is 0.04.
 :::
 
 ## Exercise 2
@@ -84,7 +84,7 @@ Specify this model in Mplus.
 
 ::: {.callout-caution collapse="true"}
 ### Answer
-See the `Ex2Model3.out` file. The interaction is specified as:
+See the iput file for Model 3. The interaction is specified as:
 
 ```default
 EExF | EmEx XWITH Fem;      ! Interaction
@@ -124,7 +124,7 @@ Specify this model in Mplus, and report the results.
 
 ::: {.callout-caution collapse="true"}
 ### Answer
-See the `Ex2Model4.out` file. The slope for females (when regressing cynicism on emotional exhaustion is not significantly different from zero: 
+See the input file for Model 4. The slope for females (when regressing cynicism on emotional exhaustion is not significantly different from zero: 
 
 ```default
 New/Additional Parameters

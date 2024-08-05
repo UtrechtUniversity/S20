@@ -24,7 +24,7 @@ VARIABLE:
   USEVARIABLES = Res1 Dep1 Res2 Dep2 Res3 Dep3;
 ```
 
-## Mean structure
+## Exercise 1: Mean structure
 Specify a model in which you investigate whether the group *means* can be constrained across time. Tip: Allow all variables to covary with each other (i.e. specify a model without constraints on the covariance structure) such that we are estimating means, and not intercepts.
 
 ### Exercise 1A
@@ -33,7 +33,7 @@ Does this model fit?
 ::: {.callout-caution collapse="true"}
 ### Answer
 
-The model specification is given in `exercise1A.inp` on SURFdrive. The model does not fit well, according to the $\chi^{2}$ and the RMSEA; CFI and TLI indicate a good and barely acceptable model fit, respectively. See the slides of day 1 of this summer school if you need a refresher on the recommended cutoff values for these fit indices (although such cutoff recommendations remain a hotly debated topic among statisticians).
+The model specification is given in `S20_Day4_Exercise1A.inp` on SURFdrive. The model does not fit well, according to the $\chi^{2}$ and the RMSEA; CFI and TLI indicate a good and barely acceptable model fit, respectively. See the slides of day 1 of this summer school if you need a refresher on the recommended cutoff values for these fit indices (although such cutoff recommendations remain a hotly debated topic among statisticians).
 
 -   $\chi^{2}$ (4) = 19.620, $p < .001$
 -   RMSEA = 0.099
@@ -58,21 +58,21 @@ Run the adjusted model and discuss the results.
 ::: {.callout-caution collapse="true"}
 ### Answer
 
-Syntax for the adjusted model is in `exercise1C.inp`. Looking at the fit indices of the adjusted model, the chi-square for this model is still significant, but all other measures indicate the model fit is okay to excellent. Moreover, the model is a significant improvement in comparison to the previous model: $\Delta\chi^{2} = 19.62 - 8.71 = 10.91$, with $\Delta$*df* = 1 and, $p = .001$.
+Syntax for the adjusted model is in `S20_Day4_Exercise1C.inp`. Looking at the fit indices of the adjusted model, the chi-square for this model is still significant, but all other measures indicate the model fit is okay to excellent. Moreover, the model is a significant improvement in comparison to the previous model: $\Delta\chi^{2} = 19.62 - 8.71 = 10.91$, with $\Delta$*df* = 1 and, $p = .001$.
 
 You can calculate the *p*-value of the $\Delta \chi^{2}$ using the `pchisq()`-function in R (with the `lower.tail` argument set to `FALSE`), or [an online tool](http://www.fourmilab.ch/rpkp/experiments/analysis/chiCalc.html)
 :::
 
-## The CLPM
+## Exercise 2: The CLPM
 
 ### Exercise 2A
-Specify the cross-lagged panel model (CLPM) in Mplus. Regress the observed variables directly on each other over time, as in the graph above. Try to think of where each parameter you estimate should go in the graph. Compare your model specification with the input file `exercise2A.inp` in SURFdrive.
+Specify the cross-lagged panel model (CLPM) in Mplus. Regress the observed variables directly on each other over time, as in the graph above. Try to think of where each parameter you estimate should go in the graph. Compare your model specification with the input file `S20_Day4_Exercise2A.inp` in SURFdrive.
 
 ![The cross-lagged panel model.](figures/CLPM2.png){width=400px}
 
 ### Exercise 2B
 
-Specify the model as in the graph below (the CLPM with centered latent variables), and again include the (significant) parameter estimates in this graph. Tip: Do not forget to constrain the measurement error variances of the observed variables to 0. Compare your model specification with the input file `exercise2B.inp` in SURFdrive.
+Specify the model as in the graph below (the CLPM with centered latent variables), and again include the (significant) parameter estimates in this graph. Tip: Do not forget to constrain the measurement error variances of the observed variables to 0. Compare your model specification with the input file `S20_Day4_Exercise2B.inp` in SURFdrive.
 
 ![The cross-lagged panel model with centered latent variables.](figures/CLPM-centered.png){width=400px}
 
@@ -102,7 +102,7 @@ Constrain the means in the second version of the CLPM. Please do not constrain t
 
 ::: {.callout-caution collapse="true"}
 ### Answer
-The input for these models are in `exercise2E.inp`. The chi-square has increased in comparison with the previous model: The reason is that this is a restricted model (a special case of the previous model). We can test whether the increase in misfit is significant using the chi-square difference test: $\Delta\chi^{2} = 69.59 - 62.98 = 6.61$ with $\Delta$*df* = 7 – 4 = 3, $p = .0854$. Hence, the constraints are tenable. We can also look at information criteria such as the AIC or BIC. The model with the lowest AIC or BIC is preferred.
+The input for these models are in `S20_Day4_Exercise2E.inp`. The chi-square has increased in comparison with the previous model: The reason is that this is a restricted model (a special case of the previous model). We can test whether the increase in misfit is significant using the chi-square difference test: $\Delta\chi^{2} = 69.59 - 62.98 = 6.61$ with $\Delta$*df* = 7 – 4 = 3, $p = .0854$. Hence, the constraints are tenable. We can also look at information criteria such as the AIC or BIC. The model with the lowest AIC or BIC is preferred.
 :::
 
 ### Exercise 2F
@@ -110,7 +110,7 @@ Continue with the model from the previous question and constrain all the lagged 
 
 ::: {.callout-caution collapse="true"}
 ### Answer
-The input for these models are in `exercise2F.inp`. The chi-square has again increased in comparison with the previous model: The reason is that this is a restricted model (a special case of the previous model). We can test whether the increase in misfit is significant: $\Delta\chi^{2} 81.52 - 69.59 = 11.93$, $\Delta$(df) = 11 - 7 = 4, $p = .0178$. 
+The input for these models are in `S20_Day3_Exercise2F.inp`. The chi-square has again increased in comparison with the previous model: The reason is that this is a restricted model (a special case of the previous model). We can test whether the increase in misfit is significant: $\Delta\chi^{2} 81.52 - 69.59 = 11.93$, $\Delta$(df) = 11 - 7 = 4, $p = .0178$. 
 
 If we stick to an alpha of .05, the constraints must be rejected (as the increase in misfit is significant). Note that we are doing several model comparisons here, so one could also argue that we should use a smaller alpha to guard against an inflated overall type I error. Again, an alternative would be to use information criteria for model comparisons.
 :::
