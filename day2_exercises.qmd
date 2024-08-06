@@ -2,6 +2,7 @@
 title: "Exercises"
 subtitle: "Day 2: EFA, multiple group models & measurement invariance"
 editor: source
+bibliography: references.bib
 ---
 
 ## Replicating Sapi results
@@ -383,7 +384,7 @@ Answer the following questions:
 ### Answer
 Comparing the two models (1-, and 2-factor) by looking at the AIC/BIC, the 2-factor solution is preferred: The AIC/BIC of the 2-factor model is lower than the AIC/BIC of the 1-factor model. 
 
-The correlation between `OVERT` and `COVERT` is 0.431 with a standard error of 0.055. So, the proportion of shared variance is 0.4312 = 0.186 = 18,6\%. Note that in the output above we find this under `STANDARDIZED RESULS`. Whether the unstandardized `OVERT WITH COVERT` can be interpreted as a correlation or a covariance, depends on how the latent variable was scaled. If the factor variances are fixed to 1 (scaling is done via the factor variances), then the unstandardized result reflects the factor correlation, otherwise they reflect the covariance.
+The correlation between `OVERT` and `COVERT` is 0.431 with a standard error of 0.055. So, the proportion of shared variance is $0.431^{2} = 0.186 = 18.6\%$. Note that in the output above we find this under `STANDARDIZED RESULS`. Whether the unstandardized `OVERT WITH COVERT` can be interpreted as a correlation or a covariance, depends on how the latent variable was scaled. If the factor variances are fixed to 1 (scaling is done via the factor variances), then the unstandardized result reflects the factor correlation, otherwise they reflect the covariance.
 :::
 
 ### Exercise B3

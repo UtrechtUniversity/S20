@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -670,7 +689,7 @@ Answer
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>VARIABLE:   </span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  MISSING = ALL (-999);</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  NAMES = Kin2 b1pss1 b2pss2 b3pss3 b4pss4 b5pss5;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The 5 items are taken from the Inventory of Complicated Grief <span class="citation" data-cites="boelen_prolonged_2010">[@boelen_prolonged_2010]</span>.</p>
+<p>The 5 items are taken from the Inventory of Complicated Grief <span class="citation" data-cites="boelen_prolonged_2010">(<a href="#ref-boelen_prolonged_2010" role="doc-biblioref">Boelen et al. 2010</a>)</span>.</p>
 <ol type="1">
 <li>Yearning;</li>
 <li>Part of self died;</li>
@@ -904,7 +923,7 @@ Answer
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Comparing the two models (1-, and 2-factor) by looking at the AIC/BIC, the 2-factor solution is preferred: The AIC/BIC of the 2-factor model is lower than the AIC/BIC of the 1-factor model.</p>
-<p>The correlation between <code>OVERT</code> and <code>COVERT</code> is 0.431 with a standard error of 0.055. So, the proportion of shared variance is 0.4312 = 0.186 = 18,6%. Note that in the output above we find this under <code>STANDARDIZED RESULS</code>. Whether the unstandardized <code>OVERT WITH COVERT</code> can be interpreted as a correlation or a covariance, depends on how the latent variable was scaled. If the factor variances are fixed to 1 (scaling is done via the factor variances), then the unstandardized result reflects the factor correlation, otherwise they reflect the covariance.</p>
+<p>The correlation between <code>OVERT</code> and <code>COVERT</code> is 0.431 with a standard error of 0.055. So, the proportion of shared variance is <span class="math inline">\(0.431^{2} = 0.186 = 18.6\%\)</span>. Note that in the output above we find this under <code>STANDARDIZED RESULS</code>. Whether the unstandardized <code>OVERT WITH COVERT</code> can be interpreted as a correlation or a covariance, depends on how the latent variable was scaled. If the factor variances are fixed to 1 (scaling is done via the factor variances), then the unstandardized result reflects the factor correlation, otherwise they reflect the covariance.</p>
 </div>
 </div>
 </div>
@@ -956,10 +975,15 @@ Answer
 </div>
 
 
+
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-boelen_prolonged_2010" class="csl-entry" role="listitem">
+Boelen, Paul A., Rens Van De Schoot, Marcel A. Van Den Hout, Jos De Keijser, and Jan Van Den Bout. 2010. <span>“Prolonged <span>Grief</span> <span>Disorder</span>, Depression, and Posttraumatic Stress Disorder Are Distinguishable Syndromes.”</span> <em>Journal of Affective Disorders</em> 125 (1-3): 374–78. <a href="https://doi.org/10.1016/j.jad.2010.01.076">https://doi.org/10.1016/j.jad.2010.01.076</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

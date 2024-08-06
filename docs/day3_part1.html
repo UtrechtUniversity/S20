@@ -307,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/day3-twoFactor.png" class="img-fluid figure-img" width="800"></p>
-<figcaption class="figure-caption">The second-order factor model.</figcaption>
+<figcaption class="figure-caption">The two-factor model.</figcaption>
 </figure>
 </div>
 <section id="exercise-1" class="level3">
@@ -434,7 +434,8 @@ Important: The <code>SAVEDATA</code> command
 <p>The SAVEDATA-command should be something like:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>SAVEDATA: NESTED = "\\Client\C$\Users\...</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>          …S20 - Day 3\Exercise 1\2factormodel.dat";</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Commands in Mplus must not exceed 90 characters per line. So if your path is quite long, don’t forget to break up your command (before the 90<span class="math inline">\(^{th}\)</span> character) and continue on a second (or third, etc.) line. See the example above. Then run the model that that is more general, and perform the nested test by adding (here you don’t need to explicitly specify the path to the .dat-file):</p>
+<p>Commands in Mplus must not exceed 90 characters per line. So if your path is quite long, don’t forget to break up your command (before the 90<span class="math inline">\(^{th}\)</span> character) and continue on a second (or third, etc.) line. See the example above (the dots … are not actually part of the path, but are there to merely represent a long path).</p>
+<p>Then run the model that that is more general, and perform the nested test by adding (here you don’t need to explicitly specify the path to the .dat-file):</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ANALYSIS: NESTED = 2factormodel.dat;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This gives you the following output under the fit statistics (just above the <code>SRMR</code>):</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Nested Model Check</span>
