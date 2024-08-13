@@ -32,6 +32,13 @@ The four researchers have different ideas about how these data should be modeled
 ### Exercise 1
 Specify each of these models in Mplus, and add the missing information to the table below. You can use the number of free parameters and/or the number of *df* to check whether you specified the model correctly.
 
+Model | Free parameters | *df* | $\chi^{2}$ | *p*-value
+------|-----------------|------|-------------|-----------:
+bi-factor model |       |      |             | 
+4-factor model |        |      |             | 
+second-order factor model | |  |             | 
+2-factor model |        |      |             | 
+
 ::: {.callout-caution collapse="true"}
 ### Answer
 
